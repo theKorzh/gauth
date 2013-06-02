@@ -6,7 +6,7 @@ Page {
         acceptAction: ActionItem {
             title: qsTr("Create")
             onTriggered: {
-                _data.add(account.text, key.text, type.selectedIndex)
+                _app.add(account.text, key.text, type.selectedIndex)
                 done()
             }
         }
@@ -53,6 +53,7 @@ Page {
             }
             TextField {
                 id: account
+                inputMode: TextFieldInputMode.EmailAddress
                 hintText: "Your Account's name"
             }
             Label {
