@@ -24,19 +24,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/NewEntry.qml" line="75"/>
+        <location filename="../assets/NewEntry.qml" line="76"/>
         <source>Type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/NewEntry.qml" line="79"/>
         <location filename="../assets/NewEntry.qml" line="80"/>
+        <location filename="../assets/NewEntry.qml" line="81"/>
         <source>Time based OTP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/NewEntry.qml" line="84"/>
         <location filename="../assets/NewEntry.qml" line="85"/>
+        <location filename="../assets/NewEntry.qml" line="86"/>
         <source>Counter based OTP</source>
         <translation type="unfinished"></translation>
     </message>
@@ -69,32 +69,33 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="86"/>
+        <location filename="../assets/main.qml" line="91"/>
         <source>Google Authenticator</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="140"/>
+        <location filename="../assets/main.qml" line="147"/>
         <source>Authenticator Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="142"/>
+        <location filename="../assets/main.qml" line="149"/>
         <source>Copy to Clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="149"/>
+        <location filename="../assets/main.qml" line="156"/>
         <source>Delete This Entry</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="157"/>
+        <location filename="../assets/main.qml" line="56"/>
+        <location filename="../assets/main.qml" line="57"/>
         <source>Confirm Deletion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="158"/>
+        <location filename="../assets/main.qml" line="159"/>
         <source>Are you sure to delete account: %0</source>
         <translation type="unfinished"></translation>
     </message>

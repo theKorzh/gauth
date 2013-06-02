@@ -3,11 +3,12 @@
 #define ApplicationUI_HPP_
 
 #include <QObject>
-#include <bb/cascades/QListDataModel>
 
 namespace bb {
 namespace cascades {
 class Application;
+class DataModel;
+class GroupDataModel;
 }
 }
 class AccountItem;
@@ -33,7 +34,7 @@ public:
 	 * @brief Remove an Entry based on its Id
 	 */
 	Q_INVOKABLE
-	void remove(int id);
+	bool remove(int id);
 
 	Q_INVOKABLE
 	int remain();
@@ -44,10 +45,10 @@ private:
 	Q_INVOKABLE
 	void init();
 private:
-	int m_iRemainTime;
-	bb::cascades::QListDataModel<AccountItem*> *dataModel() const;
+	bb::cascades::DataModel* dataModel() const;
 
-	bb::cascades::QListDataModel<AccountItem*> *m_dataModel;
+	int m_iRemainTime;
+	bb::cascades::GroupDataModel *m_dataModel;
 };
 
 #endif /* ApplicationUI_HPP_ */

@@ -9,34 +9,33 @@
 #include "compute_code.h"
 
 AccountItem::AccountItem(QObject* parent) :
-		QObject(parent), m_iId(0), m_iCode(123456), m_iType(0), m_iCounter(
-				0), m_len(0), m_pSecret(NULL), m_iEnabled(1), m_email(""){
-	// TODO Auto-generated constructor stub
+		QObject(parent), m_iId(0), m_iType(0), m_iCounter(0), m_len(0), m_pSecret(NULL), m_iEnabled(1), m_code("000000"), m_email(""){
 
 }
 AccountItem::AccountItem(const AccountItem& src) :
-		QObject(src.parent()), m_iId(src.m_iId), m_iCode(src.m_iCode), m_iType(src.m_iType), m_iCounter(
-				src.m_iCounter), m_len(src.m_len),m_pSecret(src.m_pSecret), m_iEnabled(src.m_iEnabled), m_email(src.m_email){
+		QObject(src.parent()), m_iId(src.m_iId), m_iType(src.m_iType), m_iCounter(src.m_iCounter), m_len(src.m_len), m_pSecret(
+				src.m_pSecret), m_iEnabled(src.m_iEnabled), m_code(src.m_code), m_email(src.m_email) {
 	// TODO Auto-generated constructor stub
 
 }
 AccountItem::AccountItem(int id, const QString& email, const QString& secret,
 		int type, int counter, QObject* parent) :
-		QObject(parent), m_iId(id), m_iType(type), m_iCounter(
-				counter), m_iEnabled(1), m_email(email) {
+		QObject(parent), m_iId(id), m_iType(type), m_iCounter(counter), m_iEnabled(
+				1), m_code(""), m_email(email) {
 	m_len = secret.length();
 	m_pSecret = new uint8_t[m_len];
 	memcpy(m_pSecret, secret.toAscii().constData(), m_len);
-	//m_pSecret = (const uint8_t*)secret.toAscii().constData();
-	if(m_iType){
-		m_iCode = getTotpCode(m_pSecret, m_len);
+	int code;
+	if (m_iType) {
+		code = getTotpCode(m_pSecret, m_len);
 	} else {
-		m_iCode = 0;
+		code = 0;
 	}
+	m_code.sprintf("%06d", code);
 }
 
 AccountItem::~AccountItem() {
-	if(m_pSecret){
+	if (m_pSecret) {
 		delete[] m_pSecret;
 	}
 }
@@ -49,8 +48,8 @@ QString AccountItem::email() const {
 	return m_email;
 }
 
-int AccountItem::code() const {
-	return m_iCode;
+QString AccountItem::code() const {
+	return m_code;
 }
 
 int AccountItem::type() const {
@@ -61,11 +60,9 @@ bool AccountItem::enabled() const {
 	return m_iEnabled;
 }
 
-void AccountItem::setCode(int code) {
-	if (m_iCode != code) {
-		m_iCode = code;
-		codeChanged(m_iCode);
-	}
+void AccountItem::setCode(int code){
+	m_code.sprintf("%06d",code);
+	codeChanged(m_code);
 }
 
 void AccountItem::setEnabled(bool enabled) {
@@ -79,3 +76,4 @@ bool AccountItem::next() {
 	setCode(567456);
 	return true;
 }
+

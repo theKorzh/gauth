@@ -52,10 +52,15 @@ Page {
                     }
                 },
                 SystemDialog {
-                    id: testDialog
-                    title: "Selected"
-                    onBodyChanged: {
-                        testDialog.show();
+                    id: confirmDialog
+                    title: qsTr("Confirm Deletion")
+                    body: qsTr("Confirm Deletion")
+                    onFinished: {
+                        if (value == SystemUiResult.ConfirmButtonSelection) {
+                            if (_app.remove(listView.dataModel.data(listView.activeItem).id)) {
+                                listView.dataModel.removeAt(listView.activeItem)
+                            }
+                        }
                     }
                 }
             ]
@@ -102,6 +107,7 @@ Page {
 
                 listItemComponents: [
                     ListItemComponent {
+                        type: "item"
                         Container {
                             layout: DockLayout {
                             }
@@ -112,10 +118,11 @@ Page {
                                 Label {
                                     text: ListItemData.email
                                     textStyle.fontSize: FontSize.Small
+                                    textStyle.color: Color.Blue
                                 }
                                 Label {
                                     text: ListItemData.code
-                                    textStyle.fontSize: FontSize.Large
+                                    textStyle.fontSize: FontSize.XLarge
                                 }
                             }
                             ImageButton {
@@ -127,39 +134,30 @@ Page {
                                 visible: ! ListItemData.type
                                 enabled: ListItemData.enabled
                                 onClicked: {
-                                    var data = ListItemData
-                                    page.next(data)
-                                    console.log("Log successfull")
+                                    
                                 }
                             }
-                        }
-                    }
-                ]
-                contextActions: [
-                    ActionSet {
-                        title: qsTr("Authenticator Code")
-                        ActionItem {
-                            title: qsTr("Copy to Clipboard")
-                            imageSource: "asset:///icons/ic_copy.png"
-                            onTriggered: {
-
+                            onCreationCompleted: {
+                                console.log("Account Test")
+                                console.log("Email: " + ListItemData.email)
+                                console.log("Code: " + ListItemData.code)
                             }
-                        }
-                        ActionItem {
-                            title: qsTr("Delete This Entry")
-                            imageSource: "asset:///icons/ic_delete.png"
-                            onTriggered: {
-                                confirmDialog.show()
-                            }
-                            attachedObjects: [
-                                SystemDialog {
-                                    id: confirmDialog
-                                    title: qsTr("Confirm Deletion")
-                                    body: qsTr("Are you sure to delete account: %0").arg(listView.dataModel.value(listView.activeItem).account)
-                                    onFinished: {
-                                        if (value == SystemUiResult.ConfirmButtonSelection) {
-                                            _app.remove(listView.dataModel.value(listView.activeItem).id)
-                                            listView.dataModel.removeAt(listView.activeItem)
+                            contextActions: [
+                                ActionSet {
+                                    title: qsTr("Authenticator Code")
+                                    ActionItem {
+                                        title: qsTr("Copy to Clipboard")
+                                        imageSource: "asset:///icons/ic_copy.png"
+                                        onTriggered: {
+                                        	
+                                        }
+                                    }
+                                    ActionItem {
+                                        title: qsTr("Delete This Entry")
+                                        imageSource: "asset:///icons/ic_delete.png"
+                                        onTriggered: {
+                                            Qt.dlg.body = qsTr("Are you sure to delete account: %0").arg(ListItemData.email)
+                                            Qt.dlg.show()
                                         }
                                     }
                                 }
@@ -167,20 +165,20 @@ Page {
                         }
                     }
                 ]
-                property int activeItem: -1
+                property variant activeItem: undefined
                 onActivationChanged: {
-                    if (active) activeItem = indexPath[0]
+                    if (active) activeItem = indexPath; //[0]
                 }
             }
         }
-    }
-    function next(data) {
-        data.code = 156787;
     }
     onCreationCompleted: {
         // this slot is called when declarative scene is created
         // write post creation initialization here
         console.debug("Page - onCreationCompleted()")
+        Qt.page = page;
+        Qt.app = _app;
+        Qt.dlg = confirmDialog;
         // _app.log("Page - onCreationCompleted()")
         // enable layout to adapt to the device rotation
         // don't forget to enable screen rotation in bar-bescriptor.xml (Application->Orientation->Auto-orient)

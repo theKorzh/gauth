@@ -14,12 +14,11 @@
 
 class AccountItem: public QObject {
 	Q_OBJECT
-	Q_PROPERTY(int id READ id FINAL)
-	Q_PROPERTY(int code READ code NOTIFY codeChanged FINAL)
-	Q_PROPERTY(int type READ type FINAL)
-	Q_PROPERTY(bool enabled READ enabled NOTIFY enabledChanged FINAL)
-	Q_PROPERTY(QString email READ email FINAL)
-	Q_PROPERTY(bool next READ next FINAL)
+	Q_PROPERTY(int id READ id)
+	Q_PROPERTY(QString code READ code NOTIFY codeChanged FINAL)
+	Q_PROPERTY(int type READ type)
+	Q_PROPERTY(bool enabled READ enabled WRITE setEnabled NOTIFY enabledChanged FINAL)
+	Q_PROPERTY(QString email READ email)
 public:
 	AccountItem(QObject* parent = 0);
 	AccountItem(const AccountItem&);
@@ -28,26 +27,26 @@ public:
 
 	int id() const;
 	QString email() const;
-	int code() const;
+	QString code() const;
 	int type() const;
 	bool enabled() const;
 	bool next();
 
 	Q_SIGNALS:
-	void codeChanged(int code);
-	void enabledChanged(bool enabled);
+	void codeChanged(const QString& code);
+	void enabledChanged(int type);
 
 private slots:
-	void setCode(int code);
 	void setEnabled(bool enabled);
 private:
+	void setCode(int code);
 	int m_iId;
-	int m_iCode;
 	int m_iType;
 	int m_iCounter;
 	int m_len;
 	uint8_t* m_pSecret;
 	bool m_iEnabled;
+	QString m_code;
 	QString m_email;
 };
 

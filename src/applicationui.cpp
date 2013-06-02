@@ -4,13 +4,23 @@
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/AbstractPane>
+#include <bb/cascades/GroupDataModel>
+
+#include <bb/data/SqlConnection>
+#include <bb/data/SqlDataAccess>
+
+#include <QtSql/QtSql>
+#include <QDebug>
+
 #include "AccountItem.h"
 
 using namespace bb::cascades;
 
 ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
-		QObject(app), m_iRemainTime(10), m_dataModel(
-				new QListDataModel<AccountItem*>()) {
+		QObject(app), m_iRemainTime(10) {
+	m_dataModel = new GroupDataModel(this);
+	m_dataModel->setGrouping(ItemGrouping::None);
+	m_dataModel->setSortingKeys(QStringList() << "id");
 	// create scene document from main.qml asset
 	// set parent to created document to ensure it exists for the whole application lifetime
 	QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
@@ -23,17 +33,41 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
 }
 
 ApplicationUI::~ApplicationUI() {
-	delete m_dataModel;
+	// delete m_dataModel;
 }
 
-bb::cascades::QListDataModel<AccountItem*>* ApplicationUI::dataModel() const {
+bb::cascades::DataModel* ApplicationUI::dataModel() const {
 	return m_dataModel;
 }
 
 void ApplicationUI::add(QString account, QString key, int type) {
+	int counter = 0;
+	QSqlDatabase database = QSqlDatabase::database();
+	QSqlQuery query(database);
+	query.prepare("INSERT INTO accounts"
+	                  "    (email, secret, counter, type) "
+	                  "    VALUES (:email, :secret, :counter, :type)");
+	query.bindValue(":email", account);
+	query.bindValue(":secret", key);
+	query.bindValue(":counter", counter);
+	query.bindValue(":type", type);
+	if(query.exec()){
+		int id = query.lastInsertId().toInt();
+		m_dataModel->insert(new AccountItem(id, account, key, type, counter, this));
+	} else {
+		qDebug() << "Create record error: " << query.lastError().text();
+	}
+	database.close();
 }
 
-void ApplicationUI::remove(int id) {
+bool ApplicationUI::remove(int id) {
+	QSqlDatabase database = QSqlDatabase::database();
+	QSqlQuery query(database);
+	query.prepare("DELETE FROM accounts WHERE id=:id");
+	query.bindValue(":id", id);
+	bool success = query.exec();
+	database.close();
+	return success;
 }
 
 int ApplicationUI::remain() {
@@ -55,6 +89,16 @@ void ApplicationUI::init() {
 			"CREATE TABLE IF NOT EXISTS accounts"
 					" (id INTEGER PRIMARY KEY, email TEXT NOT NULL, secret TEXT NOT NULL,"
 					" counter INTEGER DEFAULT 0, type INTEGER)");
+#ifdef QT_DEBUG
+	AccountItem *debugItem = new AccountItem(100, "abc@xyz.com", "abcd1234xyzt5678", 0,0, this);
+	m_dataModel->insert(debugItem);
+	debugItem = new AccountItem(101, "abc1@xyz.com", "abcd1234xyzt5672", 0,0, this);
+	m_dataModel->insert(debugItem);
+	debugItem = new AccountItem(102, "abc2@xyz.com", "abcd1234xyzt5672", 0,0, this);
+	m_dataModel->insert(debugItem);
+	debugItem = new AccountItem(103, "abc3@xyz.com", "abcd1234xyzt5672", 0,0, this);
+	m_dataModel->insert(debugItem);
+#endif
 	if (query.exec("SELECT id, email, secret, type, counter FROM accounts")) {
 		while (query.next()) {
 			QSqlRecord record = query.record();
@@ -65,7 +109,7 @@ void ApplicationUI::init() {
 					record.value(4).toInt(), // Counter
 					this // Parent
 					);
-			m_dataModel->append(item);
+			m_dataModel->insert(item);
 		}
 	}
 }
