@@ -134,7 +134,7 @@ Page {
                                 visible: ! ListItemData.type
                                 enabled: ListItemData.enabled
                                 onClicked: {
-                                    
+                                    var s = ListItemData.next
                                 }
                             }
                             onCreationCompleted: {

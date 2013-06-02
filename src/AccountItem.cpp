@@ -71,9 +71,14 @@ void AccountItem::setEnabled(bool enabled) {
 		enabledChanged(m_iEnabled);
 	}
 }
+#ifdef QT_DEBUG
+static int tmp = 567834;
+#endif
 
 bool AccountItem::next() {
-	setCode(567456);
+#ifdef QT_DEBUG
+	setCode(++tmp);
+#endif
 	return true;
 }
 

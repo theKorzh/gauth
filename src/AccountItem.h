@@ -19,6 +19,7 @@ class AccountItem: public QObject {
 	Q_PROPERTY(int type READ type)
 	Q_PROPERTY(bool enabled READ enabled WRITE setEnabled NOTIFY enabledChanged FINAL)
 	Q_PROPERTY(QString email READ email)
+	Q_PROPERTY(bool next READ next)
 public:
 	AccountItem(QObject* parent = 0);
 	AccountItem(const AccountItem&);
