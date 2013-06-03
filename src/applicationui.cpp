@@ -11,13 +11,18 @@
 
 #include <QtSql/QtSql>
 #include <QDebug>
+#include <QTime>
+#include <QTimer>
 
 #include "AccountItem.h"
+#include "time.h"
+
+unsigned long g_lTimeStamp;
 
 using namespace bb::cascades;
 
 ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
-		QObject(app), m_iRemainTime(10) {
+		QObject(app), m_iElapsed(0) {
 	m_dataModel = new GroupDataModel(this);
 	m_dataModel->setGrouping(ItemGrouping::None);
 	m_dataModel->setSortingKeys(QStringList() << "id");
@@ -29,6 +34,7 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
 	AbstractPane *root = qml->createRootObject<AbstractPane>();
 	// set created root object as a scene
 	app->setScene(root);
+
 	QMetaObject::invokeMethod(this, "init", Qt::QueuedConnection);
 }
 
@@ -70,11 +76,24 @@ bool ApplicationUI::remove(int id) {
 	return success;
 }
 
-int ApplicationUI::remain() {
-	return m_iRemainTime;
+int ApplicationUI::elapsed() {
+	return m_iElapsed;
 }
 
 void ApplicationUI::init() {
+	timer_t t = time(NULL);
+	g_lTimeStamp = t / 30;
+
+	QTimer *pCountDownTimer = new QTimer(this);
+	connect(pCountDownTimer, SIGNAL(timeout()), this, SLOT(updateTime()));
+
+	QTimer *pTimer = new QTimer(this);
+	connect(pTimer, SIGNAL(timeout()), this, SLOT(nextTotp()));
+
+	m_iElapsed = (t%30) * 10 + QTime::currentTime().msec() / 100;
+	pCountDownTimer->start(100);
+	pTimer->start(30000 - m_iElapsed * 100);
+
 	QSqlDatabase database = QSqlDatabase::addDatabase("QSQLITE");
 	database.setDatabaseName("./data/data.sqlite");
 
@@ -101,6 +120,25 @@ void ApplicationUI::init() {
 					this // Parent
 					);
 			m_dataModel->insert(item);
+		}
+	}
+}
+
+void ApplicationUI::updateTime(){
+	++m_iElapsed;
+	elapsedChanged(m_iElapsed);
+}
+
+void ApplicationUI::nextTotp(){
+	m_iElapsed = 0;
+	++g_lTimeStamp;
+	QTimer *pTimer = qobject_cast<QTimer*>(sender());
+	pTimer->start(30000);
+	QList<QObject*> objects = m_dataModel->toListOfObjects();
+	for(QList<QObject*>::iterator it = objects.begin(); it != objects.end(); ++it){
+		AccountItem* item = qobject_cast<AccountItem*>(*it);
+		if(!item->type()){
+			item->next();
 		}
 	}
 }

@@ -9,14 +9,16 @@ device {
                  $$quote($$BASEDIR/src/compute_code.cpp) \
                  $$quote($$BASEDIR/src/hmac.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
-                 $$quote($$BASEDIR/src/sha1.cpp)
+                 $$quote($$BASEDIR/src/sha1.cpp) \
+                 $$quote($$BASEDIR/src/time_stamp.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/AccountItem.h) \
                  $$quote($$BASEDIR/src/applicationui.hpp) \
                  $$quote($$BASEDIR/src/base32.h) \
                  $$quote($$BASEDIR/src/compute_code.h) \
                  $$quote($$BASEDIR/src/hmac.h) \
-                 $$quote($$BASEDIR/src/sha1.h)
+                 $$quote($$BASEDIR/src/sha1.h) \
+                 $$quote($$BASEDIR/src/time_stamp.h)
     }
 
     CONFIG(release, debug|release) {
@@ -26,14 +28,16 @@ device {
                  $$quote($$BASEDIR/src/compute_code.cpp) \
                  $$quote($$BASEDIR/src/hmac.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
-                 $$quote($$BASEDIR/src/sha1.cpp)
+                 $$quote($$BASEDIR/src/sha1.cpp) \
+                 $$quote($$BASEDIR/src/time_stamp.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/AccountItem.h) \
                  $$quote($$BASEDIR/src/applicationui.hpp) \
                  $$quote($$BASEDIR/src/base32.h) \
                  $$quote($$BASEDIR/src/compute_code.h) \
                  $$quote($$BASEDIR/src/hmac.h) \
-                 $$quote($$BASEDIR/src/sha1.h)
+                 $$quote($$BASEDIR/src/sha1.h) \
+                 $$quote($$BASEDIR/src/time_stamp.h)
     }
 }
 
@@ -45,14 +49,16 @@ simulator {
                  $$quote($$BASEDIR/src/compute_code.cpp) \
                  $$quote($$BASEDIR/src/hmac.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
-                 $$quote($$BASEDIR/src/sha1.cpp)
+                 $$quote($$BASEDIR/src/sha1.cpp) \
+                 $$quote($$BASEDIR/src/time_stamp.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/AccountItem.h) \
                  $$quote($$BASEDIR/src/applicationui.hpp) \
                  $$quote($$BASEDIR/src/base32.h) \
                  $$quote($$BASEDIR/src/compute_code.h) \
                  $$quote($$BASEDIR/src/hmac.h) \
-                 $$quote($$BASEDIR/src/sha1.h)
+                 $$quote($$BASEDIR/src/sha1.h) \
+                 $$quote($$BASEDIR/src/time_stamp.h)
     }
 }
 

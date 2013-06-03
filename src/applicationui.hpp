@@ -20,7 +20,7 @@ class AccountItem;
 class ApplicationUI: public QObject {
 Q_OBJECT
 
-Q_PROPERTY(int remain READ remain NOTIFY remainChanged FINAL)
+Q_PROPERTY(int elapsed READ elapsed NOTIFY elapsedChanged FINAL)
 Q_PROPERTY(bb::cascades::DataModel* dataModel READ dataModel CONSTANT)
 public:
 	ApplicationUI(bb::cascades::Application *app);
@@ -37,17 +37,20 @@ public:
 	bool remove(int id);
 
 	Q_INVOKABLE
-	int remain();
+	int elapsed();
 
 signals:
-	void remainChanged(int remain);
+	void elapsedChanged(int elapsed);
+private slots:
+	void updateTime();
+	void nextTotp();
 private:
 	Q_INVOKABLE
 	void init();
 private:
 	bb::cascades::DataModel* dataModel() const;
 
-	int m_iRemainTime;
+	int m_iElapsed;
 	bb::cascades::GroupDataModel *m_dataModel;
 };
 

@@ -93,8 +93,8 @@ Page {
             ProgressIndicator {
                 horizontalAlignment: HorizontalAlignment.Fill
                 fromValue: 0
-                toValue: 29
-                value: _app.remain
+                toValue: 300
+                value: _app.elapsed
             }
             ListView {
                 id: listView

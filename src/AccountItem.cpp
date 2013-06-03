@@ -82,27 +82,32 @@ void AccountItem::setEnabled(bool enabled) {
 }
 
 bool AccountItem::next() {
-	if (m_iEnabled) {
-		m_iEnabled = false;
-		enabledChanged(false);
-		QSqlDatabase database = QSqlDatabase::database();
-		QSqlQuery query(database);
-		query.prepare("UPDATE accounts SET counter=:counter WHERE id=:id");
-		query.bindValue(":id", m_iId);
-		query.bindValue(":counter", m_iCounter + 1);
-		if(query.exec()){
-			int code = getHotpCode(m_pSecret, m_len, ++m_iCounter);
-			setCode(code);
-			QTimer *pTimer = new QTimer();
-			connect(pTimer, SIGNAL(timeout()), this, SLOT(setEnabled()));
-			connect(pTimer, SIGNAL(timeout()), pTimer, SLOT(stop()));
-			connect(pTimer, SIGNAL(timeout()), pTimer, SLOT(deleteLater()));
-			pTimer->start(5000);
-		} else {
-			m_iEnabled = true;
-			enabledChanged(true);
+	if (m_iType) {
+		if (m_iEnabled) {
+			m_iEnabled = false;
+			enabledChanged(false);
+			QSqlDatabase database = QSqlDatabase::database();
+			QSqlQuery query(database);
+			query.prepare("UPDATE accounts SET counter=:counter WHERE id=:id");
+			query.bindValue(":id", m_iId);
+			query.bindValue(":counter", m_iCounter + 1);
+			if (query.exec()) {
+				setCode(getHotpCode(m_pSecret, m_len, ++m_iCounter));
+				QTimer *pTimer = new QTimer();
+				connect(pTimer, SIGNAL(timeout()), this, SLOT(setEnabled()));
+				connect(pTimer, SIGNAL(timeout()), pTimer, SLOT(stop()));
+				connect(pTimer, SIGNAL(timeout()), pTimer, SLOT(deleteLater()));
+				pTimer->start(5000);
+			} else {
+				m_iEnabled = true;
+				enabledChanged(true);
+			}
+			database.close();
 		}
-		database.close();
+		return false;
+	} else {
+		setCode(getTotpCode(m_pSecret, m_len));
+		return true;
 	}
-	return false;
 }
+

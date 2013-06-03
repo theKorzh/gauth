@@ -7,8 +7,9 @@
 #include "compute_code.h"
 #include "hmac.h"
 #include "sha1.h"
-#include "time.h"
 #include <QDebug>
+
+extern unsigned long g_lTimeStamp;
 
 int getHotpCode(const uint8_t* secret, int secretLen, unsigned long /*value*/ step) {
 	uint8_t val[8];
@@ -31,9 +32,8 @@ int getHotpCode(const uint8_t* secret, int secretLen, unsigned long /*value*/ st
 }
 
 int getTotpCode(const uint8_t *secret, int secretLen){
-	time_t t = time(NULL);
-	unsigned long step = t / 30;
-	qDebug() << "Time: " << t;
-	qDebug() << "Step: " << step;
-	return getHotpCode(secret, secretLen, step);
+#ifdef QT_DEBUG
+	qWarning() << "Timestamp: " << g_lTimeStamp;
+#endif
+	return getHotpCode(secret, secretLen, g_lTimeStamp);
 }
