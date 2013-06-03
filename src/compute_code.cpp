@@ -8,6 +8,7 @@
 #include "hmac.h"
 #include "sha1.h"
 #include "time.h"
+#include <QDebug>
 
 int getHotpCode(const uint8_t* secret, int secretLen, unsigned long /*value*/ step) {
 	uint8_t val[8];
@@ -29,14 +30,10 @@ int getHotpCode(const uint8_t* secret, int secretLen, unsigned long /*value*/ st
 	return truncatedHash;
 }
 
-int getHotpCode(const QString& secret, int secretLen, unsigned long /*value*/ step) {
-	const char* data = secret.toUtf8().constData();
-	const uint8_t* s = (const uint8_t*) data;
-	return getHotpCode(s, secretLen, step);
-}
-
 int getTotpCode(const uint8_t *secret, int secretLen){
 	time_t t = time(NULL);
 	unsigned long step = t / 30;
+	qDebug() << "Time: " << t;
+	qDebug() << "Step: " << step;
 	return getHotpCode(secret, secretLen, step);
 }

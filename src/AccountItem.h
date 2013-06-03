@@ -14,12 +14,12 @@
 
 class AccountItem: public QObject {
 	Q_OBJECT
-	Q_PROPERTY(int id READ id)
+	Q_PROPERTY(int id READ id CONSTANT)
 	Q_PROPERTY(QString code READ code NOTIFY codeChanged FINAL)
-	Q_PROPERTY(int type READ type)
+	Q_PROPERTY(int type READ type CONSTANT)
 	Q_PROPERTY(bool enabled READ enabled WRITE setEnabled NOTIFY enabledChanged FINAL)
-	Q_PROPERTY(QString email READ email)
-	Q_PROPERTY(bool next READ next)
+	Q_PROPERTY(QString email READ email CONSTANT)
+	Q_PROPERTY(bool next READ next CONSTANT)
 public:
 	AccountItem(QObject* parent = 0);
 	AccountItem(const AccountItem&);

@@ -7,6 +7,7 @@
 
 #include "AccountItem.h"
 #include "compute_code.h"
+#include "base32.h"
 
 AccountItem::AccountItem(QObject* parent) :
 		QObject(parent), m_iId(0), m_iType(0), m_iCounter(0), m_len(0), m_pSecret(NULL), m_iEnabled(1), m_code("000000"), m_email(""){
@@ -22,9 +23,11 @@ AccountItem::AccountItem(int id, const QString& email, const QString& secret,
 		int type, int counter, QObject* parent) :
 		QObject(parent), m_iId(id), m_iType(type), m_iCounter(counter), m_iEnabled(
 				1), m_code(""), m_email(email) {
-	m_len = secret.length();
+	uint8_t* pTmp = new uint8_t[100];
+	m_len = base32_decode((const uint8_t*)secret.toAscii().constData(), pTmp, 100);
 	m_pSecret = new uint8_t[m_len];
-	memcpy(m_pSecret, secret.toAscii().constData(), m_len);
+	memcpy(m_pSecret, pTmp, m_len);
+	delete pTmp;
 	int code;
 	if (m_iType) {
 		code = getTotpCode(m_pSecret, m_len);

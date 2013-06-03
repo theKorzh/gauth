@@ -137,11 +137,6 @@ Page {
                                     var s = ListItemData.next
                                 }
                             }
-                            onCreationCompleted: {
-                                console.log("Account Test")
-                                console.log("Email: " + ListItemData.email)
-                                console.log("Code: " + ListItemData.code)
-                            }
                             contextActions: [
                                 ActionSet {
                                     title: qsTr("Authenticator Code")

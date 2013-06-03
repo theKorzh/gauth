@@ -74,17 +74,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="147"/>
+        <location filename="../assets/main.qml" line="142"/>
         <source>Authenticator Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="149"/>
+        <location filename="../assets/main.qml" line="144"/>
         <source>Copy to Clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="156"/>
+        <location filename="../assets/main.qml" line="151"/>
         <source>Delete This Entry</source>
         <translation type="unfinished"></translation>
     </message>
@@ -95,7 +95,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="159"/>
+        <location filename="../assets/main.qml" line="154"/>
         <source>Are you sure to delete account: %0</source>
         <translation type="unfinished"></translation>
     </message>

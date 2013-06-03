@@ -90,14 +90,14 @@ void ApplicationUI::init() {
 					" (id INTEGER PRIMARY KEY, email TEXT NOT NULL, secret TEXT NOT NULL,"
 					" counter INTEGER DEFAULT 0, type INTEGER)");
 #ifdef QT_DEBUG
-	AccountItem *debugItem = new AccountItem(100, "abc@xyz.com", "abcd1234xyzt5678", 0,0, this);
+	AccountItem *debugItem = new AccountItem(100, "abc@xyz.com", "aaaaaaaaaaaaaaaa", 1,0, this);
 	m_dataModel->insert(debugItem);
-	debugItem = new AccountItem(101, "abc1@xyz.com", "abcd1234xyzt5672", 0,0, this);
-	m_dataModel->insert(debugItem);
-	debugItem = new AccountItem(102, "abc2@xyz.com", "abcd1234xyzt5672", 0,0, this);
-	m_dataModel->insert(debugItem);
-	debugItem = new AccountItem(103, "abc3@xyz.com", "abcd1234xyzt5672", 0,0, this);
-	m_dataModel->insert(debugItem);
+//	debugItem = new AccountItem(101, "abc1@xyz.com", "abcd2345xyz73565", 1,0, this);
+//	m_dataModel->insert(debugItem);
+//	debugItem = new AccountItem(102, "abc2@xyz.com", "abcd2345xyz73655", 1,10, this);
+//	m_dataModel->insert(debugItem);
+//	debugItem = new AccountItem(103, "abc3@xyz.com", "abcd2345xyzt7376", 1,0, this);
+//	m_dataModel->insert(debugItem);
 #endif
 	if (query.exec("SELECT id, email, secret, type, counter FROM accounts")) {
 		while (query.next()) {

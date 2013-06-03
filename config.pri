@@ -4,16 +4,16 @@ BASEDIR =  $$quote($$_PRO_FILE_PWD_)
 device {
     CONFIG(debug, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/AccountItem.cpp) \
-                 $$quote($$BASEDIR/src/Base32.cpp) \
                  $$quote($$BASEDIR/src/applicationui.cpp) \
+                 $$quote($$BASEDIR/src/base32.cpp) \
                  $$quote($$BASEDIR/src/compute_code.cpp) \
                  $$quote($$BASEDIR/src/hmac.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/sha1.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/AccountItem.h) \
-                 $$quote($$BASEDIR/src/Base32.h) \
                  $$quote($$BASEDIR/src/applicationui.hpp) \
+                 $$quote($$BASEDIR/src/base32.h) \
                  $$quote($$BASEDIR/src/compute_code.h) \
                  $$quote($$BASEDIR/src/hmac.h) \
                  $$quote($$BASEDIR/src/sha1.h)
@@ -21,16 +21,16 @@ device {
 
     CONFIG(release, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/AccountItem.cpp) \
-                 $$quote($$BASEDIR/src/Base32.cpp) \
                  $$quote($$BASEDIR/src/applicationui.cpp) \
+                 $$quote($$BASEDIR/src/base32.cpp) \
                  $$quote($$BASEDIR/src/compute_code.cpp) \
                  $$quote($$BASEDIR/src/hmac.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/sha1.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/AccountItem.h) \
-                 $$quote($$BASEDIR/src/Base32.h) \
                  $$quote($$BASEDIR/src/applicationui.hpp) \
+                 $$quote($$BASEDIR/src/base32.h) \
                  $$quote($$BASEDIR/src/compute_code.h) \
                  $$quote($$BASEDIR/src/hmac.h) \
                  $$quote($$BASEDIR/src/sha1.h)
@@ -40,16 +40,16 @@ device {
 simulator {
     CONFIG(debug, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/AccountItem.cpp) \
-                 $$quote($$BASEDIR/src/Base32.cpp) \
                  $$quote($$BASEDIR/src/applicationui.cpp) \
+                 $$quote($$BASEDIR/src/base32.cpp) \
                  $$quote($$BASEDIR/src/compute_code.cpp) \
                  $$quote($$BASEDIR/src/hmac.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/sha1.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/AccountItem.h) \
-                 $$quote($$BASEDIR/src/Base32.h) \
                  $$quote($$BASEDIR/src/applicationui.hpp) \
+                 $$quote($$BASEDIR/src/base32.h) \
                  $$quote($$BASEDIR/src/compute_code.h) \
                  $$quote($$BASEDIR/src/hmac.h) \
                  $$quote($$BASEDIR/src/sha1.h)
