@@ -9,30 +9,36 @@
 #include "compute_code.h"
 #include "base32.h"
 
+#include <bb/data/SqlConnection>
+#include <bb/data/SqlDataAccess>
+#include <QtSql/QtSql>
+
 AccountItem::AccountItem(QObject* parent) :
-		QObject(parent), m_iId(0), m_iType(0), m_iCounter(0), m_len(0), m_pSecret(NULL), m_iEnabled(1), m_code("000000"), m_email(""){
+		QObject(parent), m_iId(0), m_iType(0), m_iCounter(0), m_len(0), m_pSecret(
+				NULL), m_iEnabled(1), m_code("000000"), m_email("") {
 
 }
 AccountItem::AccountItem(const AccountItem& src) :
-		QObject(src.parent()), m_iId(src.m_iId), m_iType(src.m_iType), m_iCounter(src.m_iCounter), m_len(src.m_len), m_pSecret(
-				src.m_pSecret), m_iEnabled(src.m_iEnabled), m_code(src.m_code), m_email(src.m_email) {
-	// TODO Auto-generated constructor stub
-
+		QObject(src.parent()), m_iId(src.m_iId), m_iType(src.m_iType), m_iCounter(
+				src.m_iCounter), m_len(src.m_len), m_pSecret(src.m_pSecret), m_iEnabled(
+				src.m_iEnabled), m_code(src.m_code), m_email(src.m_email) {
+	qDebug() << "Copied.";
 }
 AccountItem::AccountItem(int id, const QString& email, const QString& secret,
 		int type, int counter, QObject* parent) :
 		QObject(parent), m_iId(id), m_iType(type), m_iCounter(counter), m_iEnabled(
 				1), m_code(""), m_email(email) {
 	uint8_t* pTmp = new uint8_t[100];
-	m_len = base32_decode((const uint8_t*)secret.toAscii().constData(), pTmp, 100);
+	m_len = base32_decode((const uint8_t*) secret.toAscii().constData(), pTmp,
+			100);
 	m_pSecret = new uint8_t[m_len];
 	memcpy(m_pSecret, pTmp, m_len);
 	delete pTmp;
 	int code;
 	if (m_iType) {
-		code = getTotpCode(m_pSecret, m_len);
-	} else {
 		code = 0;
+	} else {
+		code = getTotpCode(m_pSecret, m_len);
 	}
 	m_code.sprintf("%06d", code);
 }
@@ -63,8 +69,8 @@ bool AccountItem::enabled() const {
 	return m_iEnabled;
 }
 
-void AccountItem::setCode(int code){
-	m_code.sprintf("%06d",code);
+void AccountItem::setCode(int code) {
+	m_code.sprintf("%06d", code);
 	codeChanged(m_code);
 }
 
@@ -74,14 +80,29 @@ void AccountItem::setEnabled(bool enabled) {
 		enabledChanged(m_iEnabled);
 	}
 }
-#ifdef QT_DEBUG
-static int tmp = 567834;
-#endif
 
 bool AccountItem::next() {
-#ifdef QT_DEBUG
-	setCode(++tmp);
-#endif
-	return true;
+	if (m_iEnabled) {
+		m_iEnabled = false;
+		enabledChanged(false);
+		QSqlDatabase database = QSqlDatabase::database();
+		QSqlQuery query(database);
+		query.prepare("UPDATE accounts SET counter=:counter WHERE id=:id");
+		query.bindValue(":id", m_iId);
+		query.bindValue(":counter", m_iCounter + 1);
+		if(query.exec()){
+			int code = getHotpCode(m_pSecret, m_len, ++m_iCounter);
+			setCode(code);
+			QTimer *pTimer = new QTimer();
+			connect(pTimer, SIGNAL(timeout()), this, SLOT(setEnabled()));
+			connect(pTimer, SIGNAL(timeout()), pTimer, SLOT(stop()));
+			connect(pTimer, SIGNAL(timeout()), pTimer, SLOT(deleteLater()));
+			pTimer->start(5000);
+		} else {
+			m_iEnabled = true;
+			enabledChanged(true);
+		}
+		database.close();
+	}
+	return false;
 }
-

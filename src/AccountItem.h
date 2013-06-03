@@ -38,9 +38,9 @@ public:
 	void enabledChanged(int type);
 
 private slots:
-	void setEnabled(bool enabled);
+	void setEnabled(bool enabled = true);
 private:
-	void setCode(int code);
+	inline void setCode(int code);
 	int m_iId;
 	int m_iType;
 	int m_iCounter;

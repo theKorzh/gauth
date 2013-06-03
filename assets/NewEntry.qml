@@ -29,9 +29,9 @@ Page {
         }
     ]
     function reset(){
-        accountField.resetText()
-        keyField.resetText()
-        typeOption.selectedIndex = 0
+        account.resetText()
+        key.resetText()
+        type.selectedIndex = 0
     }
     Container {
         leftPadding: 20
@@ -54,6 +54,7 @@ Page {
             TextField {
                 id: account
                 inputMode: TextFieldInputMode.EmailAddress
+                input.submitKey: SubmitKey.Next
                 hintText: "Your Account's name"
             }
             Label {
@@ -61,6 +62,9 @@ Page {
             TextField {
                 id: key
                 hintText: "Your Key"
+                clearButtonVisible: true
+                input.flags: TextInputFlag.AutoCapitalizationOff | TextInputFlag.AutoCorrectionOff | TextInputFlag.AutoPeriodOff | TextInputFlag.PredictionOff | TextInputFlag.SpellCheckOff | TextInputFlag.WordSubstitutionOff
+                input.submitKey: SubmitKey.Next
             }
             Label {
             }

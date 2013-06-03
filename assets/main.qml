@@ -129,9 +129,8 @@ Page {
                                 horizontalAlignment: HorizontalAlignment.Right
                                 verticalAlignment: VerticalAlignment.Center
                                 defaultImageSource: "asset:///images/refresh.png"
-                                pressedImageSource: "asset:///icons/ic_rotate.png"
                                 disabledImageSource: "asset:///icons/ic_rotate.png"
-                                visible: ! ListItemData.type
+                                visible: ListItemData.type
                                 enabled: ListItemData.enabled
                                 onClicked: {
                                     var s = ListItemData.next
