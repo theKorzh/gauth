@@ -16,7 +16,7 @@ Page {
                 done()
             }
         }
-        title: "New Key Entry"
+        title: qsTr("New Key Entry")
     }
     actions: [
         ActionItem {
@@ -55,13 +55,13 @@ Page {
                 id: account
                 inputMode: TextFieldInputMode.EmailAddress
                 input.submitKey: SubmitKey.Next
-                hintText: "Your Account's name"
+                hintText: qsTr("Your Account's name")
             }
             Label {
             }
             TextField {
                 id: key
-                hintText: "Your Key"
+                hintText: qsTr("Your Key")
                 clearButtonVisible: true
                 input.flags: TextInputFlag.AutoCapitalizationOff | TextInputFlag.AutoCorrectionOff | TextInputFlag.AutoPeriodOff | TextInputFlag.PredictionOff | TextInputFlag.SpellCheckOff | TextInputFlag.WordSubstitutionOff
                 input.submitKey: SubmitKey.Next

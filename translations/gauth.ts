@@ -14,6 +14,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../assets/NewEntry.qml" line="19"/>
+        <source>New Key Entry</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../assets/NewEntry.qml" line="23"/>
         <source>Clear</source>
         <translation type="unfinished"></translation>
@@ -21,6 +26,16 @@
     <message>
         <location filename="../assets/NewEntry.qml" line="45"/>
         <source>Enter your secret key from the 2-step verification setup page.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/NewEntry.qml" line="58"/>
+        <source>Your Account&apos;s name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/NewEntry.qml" line="64"/>
+        <source>Your Key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -38,6 +53,19 @@
         <location filename="../assets/NewEntry.qml" line="89"/>
         <location filename="../assets/NewEntry.qml" line="90"/>
         <source>Counter based OTP</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QRScanner</name>
+    <message>
+        <location filename="../assets/QRScanner.qml" line="9"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/QRScanner.qml" line="14"/>
+        <source>Scan QR Code</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -69,33 +97,33 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="91"/>
+        <location filename="../assets/main.qml" line="107"/>
         <source>Google Authenticator</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="141"/>
+        <location filename="../assets/main.qml" line="157"/>
         <source>Authenticator Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="143"/>
+        <location filename="../assets/main.qml" line="159"/>
         <source>Copy to Clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="150"/>
+        <location filename="../assets/main.qml" line="166"/>
         <source>Delete This Entry</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="56"/>
         <location filename="../assets/main.qml" line="57"/>
+        <location filename="../assets/main.qml" line="58"/>
         <source>Confirm Deletion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="153"/>
+        <location filename="../assets/main.qml" line="169"/>
         <source>Are you sure to delete account: %0</source>
         <translation type="unfinished"></translation>
     </message>

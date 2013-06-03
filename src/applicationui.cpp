@@ -6,6 +6,8 @@
 #include <bb/cascades/AbstractPane>
 #include <bb/cascades/GroupDataModel>
 
+#include <bb/cascades/multimedia/BarcodeDetector>
+
 #include <bb/data/SqlConnection>
 #include <bb/data/SqlDataAccess>
 
@@ -141,5 +143,9 @@ void ApplicationUI::nextTotp(){
 			item->next();
 		}
 	}
+}
+
+void ApplicationUI::scanBarcode(){
+
 }
 

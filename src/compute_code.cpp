@@ -32,8 +32,5 @@ int getHotpCode(const uint8_t* secret, int secretLen, unsigned long /*value*/ st
 }
 
 int getTotpCode(const uint8_t *secret, int secretLen){
-#ifdef QT_DEBUG
-	qWarning() << "Timestamp: " << g_lTimeStamp;
-#endif
 	return getHotpCode(secret, secretLen, g_lTimeStamp);
 }

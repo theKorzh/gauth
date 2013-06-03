@@ -47,7 +47,8 @@ Page {
                         if (value == SystemUiResult.ConfirmButtonSelection) {
                             sheetNew.open()
                         } else if (value == SystemUiResult.CustomButtonSelection) {
-                            testDialog.body = "Custom"
+                            // _app.scanBarcode()
+                            sheetQR.open()
                         }
                     }
                 },
@@ -79,6 +80,21 @@ Page {
             }
             onOpened: {
                 content.reset()
+            }
+        },
+        Sheet {
+            id: sheetQR
+            // sheet GUI appearence component is defined in external CommentSheet.qml file
+            content: QRScanner {
+                onCanceled: {
+                    sheetQR.close();
+                }
+            }
+            onOpened: {
+                content.start()
+            }
+            onClosed: {
+                content.stop()
             }
         }
     ]
