@@ -40,22 +40,28 @@
  *
  *****************************************************************************
 */
+#define _BSD_SOURCE
 #include <sys/types.h> // Defines BYTE_ORDER, iff _BSD_SOURCE is defined
 #include <string.h>
-#include <gulliver.h>
 
 #include "sha1.h"
 
-#ifdef BYTE_ORDER
-#undef BYTE_ORDER
+#ifdef __LITTLEENDIAN__
+#define _LITTLE_ENDIAN __LITTLEENDIAN__
 #endif
 
 #ifdef __BIGENDIAN__
+#define _BIG_ENDIAN __BIGENDIAN__
+#endif
+
+#if !defined(BYTE_ORDER)
+#if defined(_BIG_ENDIAN)
 #define BYTE_ORDER 4321
-#elif defined(__LITTLEENDIAN__)
+#elif defined(_LITTLE_ENDIAN)
 #define BYTE_ORDER 1234
 #else
 #error Need to define BYTE_ORDER
+#endif
 #endif
 
 #ifndef TRUNC32
