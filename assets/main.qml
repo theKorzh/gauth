@@ -26,8 +26,8 @@ Page {
             attachedObjects: [
                 SystemDialog {
                     id: menu
-                    title: "Add Account"
-                    body: "How can I help you add new Account"
+                    title: qsTr("Add Account")
+                    body: qsTr("How can I help you add new Account?")
                     confirmButton {
                         enabled: true
                         label: qsTr("Add Account Manually")
