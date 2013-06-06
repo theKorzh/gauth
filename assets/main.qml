@@ -18,9 +18,9 @@ Page {
             shortcuts: [
                 SystemShortcut {
                     type: SystemShortcuts.CreateNew
-                    onTriggered: {
-                        actionAdd.triggered();
-                    }
+//                    onTriggered: {
+//                        actionAdd.triggered();
+//                    }
                 }
             ]
             onTriggered: {
@@ -117,8 +117,7 @@ Page {
                             Container {
                                 Label {
                                     text: ListItemData.email
-                                    textStyle.fontSize: FontSize.Small
-                                    textStyle.color: Color.Blue
+                                    textStyle.fontSize: FontSize.Default
                                 }
                                 Label {
                                     text: ListItemData.code

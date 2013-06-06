@@ -15,7 +15,8 @@ namespace gauth {
 
 QrScanner::QrScanner(QObject* parent) :
 		QObject(parent) {
-	QmlDocument *qml = QmlDocument::create("asset:///QRScanner.qml").parent(this);
+	QmlDocument *qml = QmlDocument::create("asset:///QRScanner.qml").parent(
+			this);
 	qml->setContextProperty("_scanner", this);
 	// create root object for the UI
 	m_pRoot = qml->createRootObject<Sheet>();
@@ -23,25 +24,38 @@ QrScanner::QrScanner(QObject* parent) :
 }
 
 QrScanner::~QrScanner() {
+	logToConsole("Scanner Destroyed");
 	// m_pRoot->close();
 }
 
-void QrScanner::process(QString data){
+void QrScanner::process(const QString& data) {
 	QString lower = data.toLower();
-	if(lower.startsWith("otpauth://")){
+	if (lower.startsWith("otpauth://")) {
 		QStringRef ref = lower.midRef(10);
 		bool hotp = true;
-		if(ref.startsWith("totp/")){
+		if (ref.startsWith("totp/")) {
 			hotp = false;
 		}
-		ref = lower.midRef(15);
+		QString substr = lower.mid(15);
 		// TODO: Debug here
-		QStringList list = ref.string()->split('?');
-		if(list[2].startsWith("secret=")){
-			QString secret = list[2].mid(7);
-			Q_EMIT detected(list[1], secret, hotp);
+		QStringList list = substr.split('?');
+		if (list[1].startsWith("secret=")) {
+			QString secret = list[1].mid(7);
+			logToConsole("Emitting Detecting.");
+			Q_EMIT detected(list[0], secret, hotp);
+			logToConsole("Emitting Detected.");
 		}
 	}
+}
+
+void QrScanner::logToConsole(const QString& msg) {
+	fprintf(stdout, "%s\n", msg.toUtf8().constData());
+	fflush(stdout);
+}
+
+void QrScanner::destroy() {
+	qDebug() << "Sheet Closing";
+	m_pRoot->close();
 }
 
 } /* namespace gauth */

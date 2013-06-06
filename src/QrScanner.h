@@ -16,21 +16,29 @@ namespace cascades {
 
 class Sheet;
 
-}  // namespace cascades
+} // namespace cascades
 
-}  // namespace bb
+} // namespace bb
 
 namespace gauth {
 
 class QrScanner: public QObject {
-	Q_OBJECT
+Q_OBJECT
 public:
 	explicit QrScanner(QObject* parent = 0);
 	virtual ~QrScanner();
 
-	Q_INVOKABLE void process(QString data);
+	Q_INVOKABLE
+	void process(const QString& data);
+
+	Q_INVOKABLE
+	void logToConsole(const QString& msg);
+
+public slots:
+	void destroy();
+
 signals:
-	void detected(const QString &account,const QString &key, int hotp);
+	void detected(const QString &account, const QString &key, int hotp);
 private:
 	bb::cascades::Sheet *m_pRoot;
 };

@@ -3,6 +3,7 @@
 #define ApplicationUI_HPP_
 
 #include <QObject>
+#include <QMutex>
 
 namespace bb {
 namespace cascades {
@@ -54,6 +55,7 @@ private:
 
 	int m_iElapsed;
 	bb::cascades::GroupDataModel *m_dataModel;
+	QMutex m_mutex;
 };
 
 #endif /* ApplicationUI_HPP_ */

@@ -64,7 +64,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/QRScanner.qml" line="14"/>
+        <location filename="../assets/QRScanner.qml" line="15"/>
         <source>Scan QR Code</source>
         <translation type="unfinished"></translation>
     </message>
@@ -102,17 +102,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="141"/>
+        <location filename="../assets/main.qml" line="140"/>
         <source>Authenticator Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="143"/>
+        <location filename="../assets/main.qml" line="142"/>
         <source>Copy to Clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="150"/>
+        <location filename="../assets/main.qml" line="149"/>
         <source>Delete This Entry</source>
         <translation type="unfinished"></translation>
     </message>
@@ -123,7 +123,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="153"/>
+        <location filename="../assets/main.qml" line="152"/>
         <source>Are you sure to delete account: %0</source>
         <translation type="unfinished"></translation>
     </message>

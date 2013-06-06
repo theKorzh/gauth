@@ -15,6 +15,7 @@
 #include <QDebug>
 #include <QTime>
 #include <QTimer>
+#include <QMutexLocker>
 
 #include <time.h>
 
@@ -52,6 +53,7 @@ bb::cascades::DataModel* ApplicationUI::dataModel() const {
 }
 
 void ApplicationUI::add(const QString &account,const QString &key, int type) {
+	QMutexLocker locker(&m_mutex);
 	int counter = 0;
 	QSqlDatabase database = QSqlDatabase::database();
 	QSqlQuery query(database);
@@ -72,6 +74,7 @@ void ApplicationUI::add(const QString &account,const QString &key, int type) {
 }
 
 bool ApplicationUI::remove(int id) {
+	QMutexLocker locker(&m_mutex);
 	QSqlDatabase database = QSqlDatabase::database();
 	QSqlQuery query(database);
 	query.prepare("DELETE FROM accounts WHERE id=:id");
@@ -150,7 +153,7 @@ void ApplicationUI::nextTotp(){
 
 void ApplicationUI::scanBarcode(){
 	QrScanner *pScanner = new QrScanner(this);
-	QObject::connect(pScanner, SIGNAL(detected(const QString&,const QString&, bool)), this, SLOT(add(const QString&,const QString&, int)));
-	QObject::connect(pScanner, SIGNAL(detected(const QString&,const QString&, bool)), pScanner, SLOT(deleteLater()));
+	QObject::connect(pScanner, SIGNAL(detected(const QString&,const QString&, int)), this, SLOT(add(const QString&,const QString&, int)));
+	QObject::connect(pScanner, SIGNAL(detected(const QString&,const QString&, int)), pScanner, SLOT(destroy()));
 }
 

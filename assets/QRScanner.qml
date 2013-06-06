@@ -8,7 +8,8 @@ Sheet {
             dismissAction: ActionItem {
                 title: qsTr("Cancel")
                 onTriggered: {
-                    _scanner.deleteLater()
+                    sheet.close()
+                    // _scanner.deleteLater()
                 }
             }
             title: qsTr("Scan QR Code")
@@ -39,13 +40,14 @@ Sheet {
                 }
 
                 onViewfinderStopped: {
-                    console.log("Camera Viewfinder Stopped")
-                    // camera.close()
+                    _scanner.logToConsole("Camera Viewfinder Stopped")
+                    barcodeDetector.camera = null
+                    camera.close()
                 }
                 
                 onCameraClosed: {
-                    console.log("Camera Closed")
-                    // _scanner.deleteLater()
+                    _scanner.logToConsole("Camera Closed")
+                    _scanner.deleteLater()
                 }
 
                 attachedObjects: [
@@ -67,7 +69,7 @@ Sheet {
                     id: barcodeDetector
                     formats: BarcodeFormat.QrCode
                     onDetected: {
-                        console.log(data)
+                        _scanner.process(data)
                     }
                 },
                 SystemSound {
@@ -82,7 +84,7 @@ Sheet {
         camera.open()
     }
     onClosed: {
-        console.log("Sheet Closed")
-        // camera.stopViewfinder()
+        _scanner.logToConsole("Sheet Closed")
+        camera.stopViewfinder()
     }
 }
