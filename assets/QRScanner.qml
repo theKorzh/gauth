@@ -1,76 +1,88 @@
 import bb.cascades 1.0
 import bb.cascades.multimedia 1.0
 import bb.multimedia 1.0
-
-Page {
-    signal canceled()
-    titleBar: TitleBar {
-        dismissAction: ActionItem {
-            title: qsTr("Cancel")
-            onTriggered: {
-                canceled()
+Sheet {
+    id: sheet
+    Page {
+        titleBar: TitleBar {
+            dismissAction: ActionItem {
+                title: qsTr("Cancel")
+                onTriggered: {
+                    _scanner.deleteLater()
+                }
             }
+            title: qsTr("Scan QR Code")
         }
-        title: qsTr("Scan QR Code")
-    }
-    Container {
-        layout: DockLayout {
-        }
-        Camera {
-            id: camera
+        Container {
+            layout: DockLayout {
+            }
+            Camera {
+                id: camera
 
-            horizontalAlignment: HorizontalAlignment.Fill
-            verticalAlignment: VerticalAlignment.Fill
+                horizontalAlignment: HorizontalAlignment.Fill
+                verticalAlignment: VerticalAlignment.Fill
 
-            onCameraOpened: {
-                // Apply some settings after the camera was opened successfully
-                getSettings(cameraSettings)
-                cameraSettings.focusMode = CameraFocusMode.ContinuousAuto
-                cameraSettings.shootingMode = CameraShootingMode.Stabilization
-                applySettings(cameraSettings)
+                onCameraOpened: {
+                    // Apply some settings after the camera was opened successfully
+                    getSettings(cameraSettings)
+                    cameraSettings.focusMode = CameraFocusMode.ContinuousAuto
+                    cameraSettings.shootingMode = CameraShootingMode.Stabilization
+                    applySettings(cameraSettings)
 
-                // Start the view finder as it is needed by the barcode detector
-                camera.startViewfinder()
+                    // Start the view finder as it is needed by the barcode detector
+                    camera.startViewfinder()
+                }
+
+                onViewfinderStarted: {
+                    // Setup the barcode detector with the camera object now
+                    barcodeDetector.camera = camera
+                }
+
+                onViewfinderStopped: {
+                    console.log("Camera Viewfinder Stopped")
+                    // camera.close()
+                }
+                
+                onCameraClosed: {
+                    console.log("Camera Closed")
+                    // _scanner.deleteLater()
+                }
+
+                attachedObjects: [
+                    CameraSettings {
+                        id: cameraSettings
+                    }
+                ]
             }
 
-            onViewfinderStarted: {
-                // Setup the barcode detector with the camera object now
-                barcodeDetector.camera = camera
-            }
+            // The overlay image
+            ImageView {
+                horizontalAlignment: HorizontalAlignment.Fill
+                verticalAlignment: VerticalAlignment.Fill
 
+                imageSource: "asset:///images/overlay.png"
+            }
             attachedObjects: [
-                CameraSettings {
-                    id: cameraSettings
+                BarcodeDetector {
+                    id: barcodeDetector
+                    formats: BarcodeFormat.QrCode
+                    onDetected: {
+                        console.log(data)
+                    }
+                },
+                SystemSound {
+                    id: scannedSound
+
+                    sound: SystemSound.GeneralNotification
                 }
             ]
         }
-
-        // The overlay image
-        ImageView {
-            horizontalAlignment: HorizontalAlignment.Fill
-            verticalAlignment: VerticalAlignment.Fill
-
-            imageSource: "asset:///images/overlay.png"
-        }
-        attachedObjects: [
-            BarcodeDetector {
-                id: barcodeDetector
-                formats: BarcodeFormat.QrCode
-                onDetected: {
-                    console.log(data)
-                }
-            },
-            SystemSound {
-                id: scannedSound
-
-                sound: SystemSound.GeneralNotification
-            }
-        ]
     }
-    function start(){
+    onOpened: {
         camera.open()
     }
-    function stop(){
-        camera.close()
+    onClosed: {
+        console.log("Sheet Closed")
+        // camera.stopViewfinder()
     }
 }

@@ -25,11 +25,13 @@ Q_PROPERTY(bb::cascades::DataModel* dataModel READ dataModel CONSTANT)
 public:
 	ApplicationUI(bb::cascades::Application *app);
 	virtual ~ApplicationUI();
+
+public slots:
 	/*!
 	 * @brief Add new key Entry
 	 */
-	Q_INVOKABLE
-	void add(QString account, QString key, int type);
+	void add(const QString &account, const QString &key, int type);
+public:
 	/*!
 	 * @brief Remove an Entry based on its Id
 	 */
@@ -37,9 +39,8 @@ public:
 	bool remove(int id);
 
 	Q_INVOKABLE
-	int elapsed();
+	void scanBarcode();
 
-	Q_INVOKABLE void scanBarcode();
 signals:
 	void elapsedChanged(int elapsed);
 private slots:
@@ -48,7 +49,7 @@ private slots:
 private:
 	Q_INVOKABLE
 	void init();
-private:
+	int elapsed();
 	bb::cascades::DataModel* dataModel() const;
 
 	int m_iElapsed;

@@ -4,6 +4,7 @@ BASEDIR =  $$quote($$_PRO_FILE_PWD_)
 device {
     CONFIG(debug, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/AccountItem.cpp) \
+                 $$quote($$BASEDIR/src/QrScanner.cpp) \
                  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/base32.cpp) \
                  $$quote($$BASEDIR/src/compute_code.cpp) \
@@ -13,6 +14,7 @@ device {
                  $$quote($$BASEDIR/src/time_stamp.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/AccountItem.h) \
+                 $$quote($$BASEDIR/src/QrScanner.h) \
                  $$quote($$BASEDIR/src/applicationui.hpp) \
                  $$quote($$BASEDIR/src/base32.h) \
                  $$quote($$BASEDIR/src/compute_code.h) \
@@ -23,6 +25,7 @@ device {
 
     CONFIG(release, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/AccountItem.cpp) \
+                 $$quote($$BASEDIR/src/QrScanner.cpp) \
                  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/base32.cpp) \
                  $$quote($$BASEDIR/src/compute_code.cpp) \
@@ -32,6 +35,7 @@ device {
                  $$quote($$BASEDIR/src/time_stamp.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/AccountItem.h) \
+                 $$quote($$BASEDIR/src/QrScanner.h) \
                  $$quote($$BASEDIR/src/applicationui.hpp) \
                  $$quote($$BASEDIR/src/base32.h) \
                  $$quote($$BASEDIR/src/compute_code.h) \
@@ -44,6 +48,7 @@ device {
 simulator {
     CONFIG(debug, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/AccountItem.cpp) \
+                 $$quote($$BASEDIR/src/QrScanner.cpp) \
                  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/base32.cpp) \
                  $$quote($$BASEDIR/src/compute_code.cpp) \
@@ -53,6 +58,7 @@ simulator {
                  $$quote($$BASEDIR/src/time_stamp.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/AccountItem.h) \
+                 $$quote($$BASEDIR/src/QrScanner.h) \
                  $$quote($$BASEDIR/src/applicationui.hpp) \
                  $$quote($$BASEDIR/src/base32.h) \
                  $$quote($$BASEDIR/src/compute_code.h) \

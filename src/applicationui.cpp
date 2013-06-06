@@ -16,12 +16,15 @@
 #include <QTime>
 #include <QTimer>
 
+#include <time.h>
+
 #include "AccountItem.h"
-#include "time.h"
+#include "QrScanner.h"
 
 unsigned long g_lTimeStamp;
 
 using namespace bb::cascades;
+using namespace gauth;
 
 ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
 		QObject(app), m_iElapsed(0) {
@@ -48,7 +51,7 @@ bb::cascades::DataModel* ApplicationUI::dataModel() const {
 	return m_dataModel;
 }
 
-void ApplicationUI::add(QString account, QString key, int type) {
+void ApplicationUI::add(const QString &account,const QString &key, int type) {
 	int counter = 0;
 	QSqlDatabase database = QSqlDatabase::database();
 	QSqlQuery query(database);
@@ -146,6 +149,8 @@ void ApplicationUI::nextTotp(){
 }
 
 void ApplicationUI::scanBarcode(){
-
+	QrScanner *pScanner = new QrScanner(this);
+	QObject::connect(pScanner, SIGNAL(detected(const QString&,const QString&, bool)), this, SLOT(add(const QString&,const QString&, int)));
+	QObject::connect(pScanner, SIGNAL(detected(const QString&,const QString&, bool)), pScanner, SLOT(deleteLater()));
 }
 

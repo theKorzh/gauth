@@ -97,33 +97,33 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="107"/>
+        <location filename="../assets/main.qml" line="91"/>
         <source>Google Authenticator</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="157"/>
+        <location filename="../assets/main.qml" line="141"/>
         <source>Authenticator Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="159"/>
+        <location filename="../assets/main.qml" line="143"/>
         <source>Copy to Clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="166"/>
+        <location filename="../assets/main.qml" line="150"/>
         <source>Delete This Entry</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../assets/main.qml" line="56"/>
         <location filename="../assets/main.qml" line="57"/>
-        <location filename="../assets/main.qml" line="58"/>
         <source>Confirm Deletion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="169"/>
+        <location filename="../assets/main.qml" line="153"/>
         <source>Are you sure to delete account: %0</source>
         <translation type="unfinished"></translation>
     </message>
