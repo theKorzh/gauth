@@ -18,9 +18,6 @@ Page {
             shortcuts: [
                 SystemShortcut {
                     type: SystemShortcuts.CreateNew
-//                    onTriggered: {
-//                        actionAdd.triggered();
-//                    }
                 }
             ]
             onTriggered: {
@@ -172,6 +169,7 @@ Page {
         Qt.page = page;
         Qt.app = _app;
         Qt.dlg = confirmDialog;
+        Qt.sheetNew = sheetNew;
         // _app.log("Page - onCreationCompleted()")
         // enable layout to adapt to the device rotation
         // don't forget to enable screen rotation in bar-bescriptor.xml (Application->Orientation->Auto-orient)

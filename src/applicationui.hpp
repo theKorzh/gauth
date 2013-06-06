@@ -42,6 +42,7 @@ public:
 	Q_INVOKABLE
 	void scanBarcode();
 
+
 signals:
 	void elapsedChanged(int elapsed);
 private slots:

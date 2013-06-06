@@ -40,14 +40,12 @@ Sheet {
                 }
 
                 onViewfinderStopped: {
-                    _scanner.logToConsole("Camera Viewfinder Stopped")
                     barcodeDetector.camera = null
                     camera.close()
                 }
                 
                 onCameraClosed: {
-                    _scanner.logToConsole("Camera Closed")
-                    _scanner.deleteLater()
+                    _scanner.markForDelete()
                 }
 
                 attachedObjects: [
@@ -70,11 +68,11 @@ Sheet {
                     formats: BarcodeFormat.QrCode
                     onDetected: {
                         _scanner.process(data)
+                        scannedSound.play()
                     }
                 },
                 SystemSound {
                     id: scannedSound
-
                     sound: SystemSound.GeneralNotification
                 }
             ]
@@ -84,7 +82,6 @@ Sheet {
         camera.open()
     }
     onClosed: {
-        _scanner.logToConsole("Sheet Closed")
         camera.stopViewfinder()
     }
 }

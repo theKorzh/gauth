@@ -30,12 +30,10 @@ public:
 
 	Q_INVOKABLE
 	void process(const QString& data);
-
-	Q_INVOKABLE
-	void logToConsole(const QString& msg);
+	Q_INVOKABLE void markForDelete();
 
 public slots:
-	void destroy();
+	void close();
 
 signals:
 	void detected(const QString &account, const QString &key, int hotp);

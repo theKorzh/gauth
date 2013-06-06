@@ -21,6 +21,7 @@
 
 #include "AccountItem.h"
 #include "QrScanner.h"
+#include "log.h"
 
 unsigned long g_lTimeStamp;
 
@@ -52,23 +53,46 @@ bb::cascades::DataModel* ApplicationUI::dataModel() const {
 	return m_dataModel;
 }
 
-void ApplicationUI::add(const QString &account,const QString &key, int type) {
+void ApplicationUI::add(const QString &account, const QString &key, int type) {
 	QMutexLocker locker(&m_mutex);
-	int counter = 0;
 	QSqlDatabase database = QSqlDatabase::database();
 	QSqlQuery query(database);
-	query.prepare("INSERT INTO accounts"
-	                  "    (email, secret, counter, type) "
-	                  "    VALUES (:email, :secret, :counter, :type)");
+	QList<QObject*> objects = m_dataModel->toListOfObjects();
+	bool isNew = true;
+	AccountItem* item = NULL;
+	for (QList<QObject*>::iterator it = objects.begin();
+			isNew && (it != objects.end()); ++it) {
+		item = qobject_cast<AccountItem*>(*it);
+		if (item->email() == account) {
+			isNew = false;
+			m_dataModel->remove(item);
+		}
+	}
+	if (isNew) {
+		query.prepare(
+				"INSERT INTO accounts "
+				"(email, secret, type) "
+				"VALUES (:email, :secret, :type)"
+				);
+	} else {
+		query.prepare(
+				"UPDATE accounts "
+				"SET email=:email, secret=:secret, type=:type "
+				"WHERE id=:id"
+				);
+		query.bindValue(":id",item->id());
+	}
 	query.bindValue(":email", account);
 	query.bindValue(":secret", key);
-	query.bindValue(":counter", counter);
 	query.bindValue(":type", type);
-	if(query.exec()){
-		int id = query.lastInsertId().toInt();
-		m_dataModel->insert(new AccountItem(id, account, key, type, counter, this));
+	if (query.exec()) {
+		int id = isNew ? query.lastInsertId().toInt() : item->id();
+		delete item;
+		m_dataModel->insert(
+				new AccountItem(id, account, key, type, 0, this));
+		logToConsole(QString("Added/Updated Id: %1").arg(id));
 	} else {
-		qDebug() << "Create record error: " << query.lastError().text();
+		logToConsole(QString("Create record error: ").arg(query.lastError().text()));
 	}
 	database.close();
 }
@@ -98,7 +122,7 @@ void ApplicationUI::init() {
 	QTimer *pTimer = new QTimer(this);
 	connect(pTimer, SIGNAL(timeout()), this, SLOT(nextTotp()));
 
-	m_iElapsed = (t%30) * 10 + QTime::currentTime().msec() / 100;
+	m_iElapsed = (t % 30) * 10 + QTime::currentTime().msec() / 100;
 	pCountDownTimer->start(100);
 	pTimer->start(30000 - m_iElapsed * 100);
 
@@ -107,7 +131,7 @@ void ApplicationUI::init() {
 
 	if (database.open() == false) {
 		const QSqlError error = database.lastError();
-		qDebug() << "\nDatabase NOT opened.";
+		logToConsole( "\nDatabase NOT opened." );
 		return; // return as if we cannot open a connection to the db, then below calls
 				// will also fail
 	}
@@ -127,33 +151,40 @@ void ApplicationUI::init() {
 					record.value(4).toInt(), // Counter
 					this // Parent
 					);
+			logToConsole(QString("Id: %1, Email %2").arg(item->id()).arg(item->email()));
 			m_dataModel->insert(item);
 		}
 	}
 }
 
-void ApplicationUI::updateTime(){
+void ApplicationUI::updateTime() {
 	++m_iElapsed;
 	elapsedChanged(m_iElapsed);
 }
 
-void ApplicationUI::nextTotp(){
+void ApplicationUI::nextTotp() {
 	m_iElapsed = 0;
+	elapsedChanged(0);
 	++g_lTimeStamp;
 	QTimer *pTimer = qobject_cast<QTimer*>(sender());
 	pTimer->start(30000);
 	QList<QObject*> objects = m_dataModel->toListOfObjects();
-	for(QList<QObject*>::iterator it = objects.begin(); it != objects.end(); ++it){
+	for (QList<QObject*>::iterator it = objects.begin(); it != objects.end();
+			++it) {
 		AccountItem* item = qobject_cast<AccountItem*>(*it);
-		if(!item->type()){
+		if (!item->type()) {
 			item->next();
 		}
 	}
 }
 
-void ApplicationUI::scanBarcode(){
+void ApplicationUI::scanBarcode() {
 	QrScanner *pScanner = new QrScanner(this);
-	QObject::connect(pScanner, SIGNAL(detected(const QString&,const QString&, int)), this, SLOT(add(const QString&,const QString&, int)));
-	QObject::connect(pScanner, SIGNAL(detected(const QString&,const QString&, int)), pScanner, SLOT(destroy()));
+	QObject::connect(pScanner,
+			SIGNAL(detected(const QString&,const QString&, int)), this,
+			SLOT(add(const QString&,const QString&, int)));
+	QObject::connect(pScanner,
+			SIGNAL(detected(const QString&,const QString&, int)), pScanner,
+			SLOT(close()));
 }
 

@@ -9,6 +9,8 @@
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/Sheet>
 
+#include "log.h"
+
 using namespace bb::cascades;
 
 namespace gauth {
@@ -20,11 +22,12 @@ QrScanner::QrScanner(QObject* parent) :
 	qml->setContextProperty("_scanner", this);
 	// create root object for the UI
 	m_pRoot = qml->createRootObject<Sheet>();
+	m_pRoot->setParent(this);
 	m_pRoot->open();
 }
 
 QrScanner::~QrScanner() {
-	logToConsole("Scanner Destroyed");
+	logToConsole("Destroyed.");
 	// m_pRoot->close();
 }
 
@@ -41,20 +44,16 @@ void QrScanner::process(const QString& data) {
 		QStringList list = substr.split('?');
 		if (list[1].startsWith("secret=")) {
 			QString secret = list[1].mid(7);
-			logToConsole("Emitting Detecting.");
 			Q_EMIT detected(list[0], secret, hotp);
-			logToConsole("Emitting Detected.");
 		}
 	}
 }
 
-void QrScanner::logToConsole(const QString& msg) {
-	fprintf(stdout, "%s\n", msg.toUtf8().constData());
-	fflush(stdout);
+void QrScanner::markForDelete() {
+	deleteLater();
 }
 
-void QrScanner::destroy() {
-	qDebug() << "Sheet Closing";
+void QrScanner::close() {
 	m_pRoot->close();
 }
 

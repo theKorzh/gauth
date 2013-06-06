@@ -6,12 +6,14 @@
  */
 
 #include "AccountItem.h"
-#include "compute_code.h"
-#include "base32.h"
 
 #include <bb/data/SqlConnection>
 #include <bb/data/SqlDataAccess>
 #include <QtSql/QtSql>
+
+#include "log.h"
+#include "compute_code.h"
+#include "base32.h"
 
 AccountItem::AccountItem(QObject* parent) :
 		QObject(parent), m_iId(0), m_iType(0), m_iCounter(0), m_len(0), m_pSecret(
@@ -22,7 +24,7 @@ AccountItem::AccountItem(const AccountItem& src) :
 		QObject(src.parent()), m_iId(src.m_iId), m_iType(src.m_iType), m_iCounter(
 				src.m_iCounter), m_len(src.m_len), m_pSecret(src.m_pSecret), m_iEnabled(
 				src.m_iEnabled), m_code(src.m_code), m_email(src.m_email) {
-	qDebug() << "Copied.";
+	logToConsole("Copied.");
 }
 AccountItem::AccountItem(int id, const QString& email, const QString& secret,
 		int type, int counter, QObject* parent) :

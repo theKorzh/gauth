@@ -9,6 +9,7 @@ device {
                  $$quote($$BASEDIR/src/base32.cpp) \
                  $$quote($$BASEDIR/src/compute_code.cpp) \
                  $$quote($$BASEDIR/src/hmac.cpp) \
+                 $$quote($$BASEDIR/src/log.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/sha1.cpp) \
                  $$quote($$BASEDIR/src/time_stamp.cpp)
@@ -19,6 +20,7 @@ device {
                  $$quote($$BASEDIR/src/base32.h) \
                  $$quote($$BASEDIR/src/compute_code.h) \
                  $$quote($$BASEDIR/src/hmac.h) \
+                 $$quote($$BASEDIR/src/log.h) \
                  $$quote($$BASEDIR/src/sha1.h) \
                  $$quote($$BASEDIR/src/time_stamp.h)
     }
@@ -30,6 +32,7 @@ device {
                  $$quote($$BASEDIR/src/base32.cpp) \
                  $$quote($$BASEDIR/src/compute_code.cpp) \
                  $$quote($$BASEDIR/src/hmac.cpp) \
+                 $$quote($$BASEDIR/src/log.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/sha1.cpp) \
                  $$quote($$BASEDIR/src/time_stamp.cpp)
@@ -40,6 +43,7 @@ device {
                  $$quote($$BASEDIR/src/base32.h) \
                  $$quote($$BASEDIR/src/compute_code.h) \
                  $$quote($$BASEDIR/src/hmac.h) \
+                 $$quote($$BASEDIR/src/log.h) \
                  $$quote($$BASEDIR/src/sha1.h) \
                  $$quote($$BASEDIR/src/time_stamp.h)
     }
@@ -53,6 +57,7 @@ simulator {
                  $$quote($$BASEDIR/src/base32.cpp) \
                  $$quote($$BASEDIR/src/compute_code.cpp) \
                  $$quote($$BASEDIR/src/hmac.cpp) \
+                 $$quote($$BASEDIR/src/log.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/sha1.cpp) \
                  $$quote($$BASEDIR/src/time_stamp.cpp)
@@ -63,6 +68,7 @@ simulator {
                  $$quote($$BASEDIR/src/base32.h) \
                  $$quote($$BASEDIR/src/compute_code.h) \
                  $$quote($$BASEDIR/src/hmac.h) \
+                 $$quote($$BASEDIR/src/log.h) \
                  $$quote($$BASEDIR/src/sha1.h) \
                  $$quote($$BASEDIR/src/time_stamp.h)
     }
