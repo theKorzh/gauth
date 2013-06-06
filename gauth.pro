@@ -1,7 +1,7 @@
 APP_NAME = gauth
 
 CONFIG += qt warn_on cascades10
-LIBS += -lbbcascadesmultimedia
+LIBS += -lbbcascadesmultimedia -lbbsystem
 
 include(config.pri)
 

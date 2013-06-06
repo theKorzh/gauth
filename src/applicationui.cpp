@@ -5,11 +5,12 @@
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/AbstractPane>
 #include <bb/cascades/GroupDataModel>
-
 #include <bb/cascades/multimedia/BarcodeDetector>
 
 #include <bb/data/SqlConnection>
 #include <bb/data/SqlDataAccess>
+
+#include <bb/system/Clipboard>
 
 #include <QtSql/QtSql>
 #include <QDebug>
@@ -26,10 +27,12 @@
 unsigned long g_lTimeStamp;
 
 using namespace bb::cascades;
+using namespace bb::system;
+
 using namespace gauth;
 
 ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
-		QObject(app), m_iElapsed(0) {
+		QObject(app), m_iElapsed(0), m_pClipboard(NULL) {
 	m_dataModel = new GroupDataModel(this);
 	m_dataModel->setGrouping(ItemGrouping::None);
 	m_dataModel->setSortingKeys(QStringList() << "id");
@@ -188,3 +191,9 @@ void ApplicationUI::scanBarcode() {
 			SLOT(close()));
 }
 
+void ApplicationUI::insertToClipboard(const QString& code){
+	if(!m_pClipboard){
+		m_pClipboard = new Clipboard(this);
+	}
+	m_pClipboard->insert("text/plain", code.toAscii());
+}

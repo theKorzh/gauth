@@ -5,11 +5,11 @@ import bb.system 1.0
 Page {
     id: page
     actions: [
-        ActionItem {
-            title: qsTr("How it work")
-            imageSource: "asset:///icons/ic_help.png"
-            ActionBar.placement: ActionBarPlacement.OnBar
-        },
+//        ActionItem {
+//            title: qsTr("How it work")
+//            imageSource: "asset:///icons/ic_help.png"
+//            ActionBar.placement: ActionBarPlacement.OnBar
+//        },
         ActionItem {
             id: actionAdd
             title: qsTr("Add account")
@@ -139,7 +139,7 @@ Page {
                                         title: qsTr("Copy to Clipboard")
                                         imageSource: "asset:///icons/ic_copy.png"
                                         onTriggered: {
-                                        	
+                                        	Qt.app.insertToClipboard(ListItemData.code)
                                         }
                                     }
                                     ActionItem {
@@ -169,7 +169,7 @@ Page {
         Qt.page = page;
         Qt.app = _app;
         Qt.dlg = confirmDialog;
-        Qt.sheetNew = sheetNew;
+        Qt.cb = cb;
         // _app.log("Page - onCreationCompleted()")
         // enable layout to adapt to the device rotation
         // don't forget to enable screen rotation in bar-bescriptor.xml (Application->Orientation->Auto-orient)

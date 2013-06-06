@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="en_US">
+<TS version="2.0" language="vi_VN">
 <context>
     <name>NewEntry</name>
     <message>
@@ -74,21 +74,27 @@
     <message>
         <location filename="../assets/main.qml" line="15"/>
         <source>Add account</source>
-        <translation>Add account</translation>
+        <translation>Thêm tài khoản</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="33"/>
         <source>Add Account Manually</source>
-        <translation>Add account Manually</translation>
+        <translation>Thêm bằng tay</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="37"/>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation type="unfinished">Hủy bỏ</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="41"/>
         <source>Scan QR Barcode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/main.qml" line="53"/>
+        <location filename="../assets/main.qml" line="54"/>
+        <source>Confirm Deletion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -109,12 +115,6 @@
     <message>
         <location filename="../assets/main.qml" line="146"/>
         <source>Delete This Entry</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/main.qml" line="53"/>
-        <location filename="../assets/main.qml" line="54"/>
-        <source>Confirm Deletion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -11,6 +11,11 @@ class Application;
 class DataModel;
 class GroupDataModel;
 }
+namespace system {
+
+class Clipboard;
+
+}  // namespace system
 }
 class AccountItem;
 /*!
@@ -42,6 +47,8 @@ public:
 	Q_INVOKABLE
 	void scanBarcode();
 
+	Q_INVOKABLE
+	void insertToClipboard(const QString &data);
 
 signals:
 	void elapsedChanged(int elapsed);
@@ -56,6 +63,7 @@ private:
 
 	int m_iElapsed;
 	bb::cascades::GroupDataModel *m_dataModel;
+	bb::system::Clipboard *m_pClipboard;
 	QMutex m_mutex;
 };
 
