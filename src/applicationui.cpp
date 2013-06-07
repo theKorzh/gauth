@@ -10,6 +10,8 @@
 #include <bb/data/SqlConnection>
 #include <bb/data/SqlDataAccess>
 
+#include <bb/multimedia/SystemSound>
+
 #include <bb/system/Clipboard>
 
 #include <QtSql/QtSql>
@@ -27,12 +29,13 @@
 unsigned long g_lTimeStamp;
 
 using namespace bb::cascades;
+using namespace bb::multimedia;
 using namespace bb::system;
 
 using namespace gauth;
 
 ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
-		QObject(app), m_iElapsed(0), m_pClipboard(NULL) {
+		QObject(app), m_iElapsed(0), m_pClipboard(NULL), m_mutex() {
 	m_dataModel = new GroupDataModel(this);
 	m_dataModel->setGrouping(ItemGrouping::None);
 	m_dataModel->setSortingKeys(QStringList() << "id");
@@ -96,8 +99,19 @@ void ApplicationUI::add(const QString &account, const QString &key, int digits, 
 		m_dataModel->insert(
 				new AccountItem(id, account, key, type, 0, digits, this));
 		logToConsole(QString("Added/Updated Id: %1").arg(id));
+		SystemSound::play(SystemSound::GeneralNotification);
 	} else {
 		logToConsole(QString("Create record error: ").arg(query.lastError().text()));
+	}
+	if(sender()){
+		QrScanner *pScanner = qobject_cast<QrScanner*>(sender());
+		if(pScanner){
+			logToConsole("Call QRScanner::close()");
+			QObject::disconnect(pScanner,
+						SIGNAL(detected(const QString&,const QString&, int, int)), this,
+						SLOT(add(const QString&,const QString&, int, int)));
+			pScanner->close();
+		}
 	}
 	database.close();
 }
@@ -202,9 +216,6 @@ void ApplicationUI::scanBarcode() {
 	QObject::connect(pScanner,
 			SIGNAL(detected(const QString&,const QString&, int, int)), this,
 			SLOT(add(const QString&,const QString&, int, int)));
-	QObject::connect(pScanner,
-			SIGNAL(detected(const QString&,const QString&, int, int)), pScanner,
-			SLOT(close()));
 	pScanner->open();
 }
 

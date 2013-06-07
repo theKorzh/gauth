@@ -6,6 +6,7 @@
  */
 
 #include "QrScanner.h"
+
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/Sheet>
 
@@ -15,10 +16,11 @@
 
 using namespace bb::cascades;
 
+
 namespace gauth {
 
 QrScanner::QrScanner(QObject* parent) :
-		QObject(parent) {
+		QObject(parent), m_bClosing(false) {
 	QmlDocument *qml = QmlDocument::create("asset:///QRScanner.qml").parent(
 			this);
 	qml->setContextProperty("_scanner", this);
@@ -33,6 +35,8 @@ QrScanner::~QrScanner() {
 }
 
 void QrScanner::process(const QString& data) {
+	if(m_bClosing)
+		return;
 	QUrl url(data);
 	logToConsole(QString("Processing: %1").arg(data));
 	logToConsole(QString("Scheme: %1").arg(url.scheme()));
@@ -62,6 +66,7 @@ void QrScanner::open(){
 }
 
 void QrScanner::close() {
+	m_bClosing = true;
 	m_pRoot->close();
 }
 

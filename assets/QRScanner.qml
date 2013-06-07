@@ -1,6 +1,6 @@
 import bb.cascades 1.0
 import bb.cascades.multimedia 1.0
-import bb.multimedia 1.0
+
 Sheet {
     id: sheet
     Page {
@@ -67,12 +67,7 @@ Sheet {
                     formats: BarcodeFormat.QrCode
                     onDetected: {
                         _scanner.process(data)
-                        scannedSound.play()
                     }
-                },
-                SystemSound {
-                    id: scannedSound
-                    sound: SystemSound.GeneralNotification
                 }
             ]
         }
