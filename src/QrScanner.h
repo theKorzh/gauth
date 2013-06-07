@@ -33,10 +33,11 @@ public:
 	Q_INVOKABLE void markForDelete();
 
 public slots:
+	void open();
 	void close();
 
 signals:
-	void detected(const QString &account, const QString &key, int hotp);
+	void detected(const QString &account, const QString &key, int digits, int hotp);
 private:
 	bb::cascades::Sheet *m_pRoot;
 };

@@ -1,5 +1,5 @@
 1
-13
+14
 icons/ic_add.png
 icons/ic_cancel.png
 icons/ic_copy.png
@@ -8,6 +8,7 @@ icons/ic_edit.png
 icons/ic_help.png
 icons/ic_rotate.png
 images/overlay.png
+images/README.md
 images/refresh.png
 images/refresh_pressed.png
 main.qml

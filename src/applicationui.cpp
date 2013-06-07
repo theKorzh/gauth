@@ -56,8 +56,9 @@ bb::cascades::DataModel* ApplicationUI::dataModel() const {
 	return m_dataModel;
 }
 
-void ApplicationUI::add(const QString &account, const QString &key, int type) {
+void ApplicationUI::add(const QString &account, const QString &key, int digits, int type) {
 	QMutexLocker locker(&m_mutex);
+	logToConsole("Add Function Called");
 	QSqlDatabase database = QSqlDatabase::database();
 	QSqlQuery query(database);
 	QList<QObject*> objects = m_dataModel->toListOfObjects();
@@ -74,13 +75,13 @@ void ApplicationUI::add(const QString &account, const QString &key, int type) {
 	if (isNew) {
 		query.prepare(
 				"INSERT INTO accounts "
-				"(email, secret, type) "
-				"VALUES (:email, :secret, :type)"
+				"(email, secret, type, digits) "
+				"VALUES (:email, :secret, :type, :digit)"
 				);
 	} else {
 		query.prepare(
 				"UPDATE accounts "
-				"SET email=:email, secret=:secret, type=:type "
+				"SET email=:email, secret=:secret, type=:type, digits=:digit "
 				"WHERE id=:id"
 				);
 		query.bindValue(":id",item->id());
@@ -88,11 +89,12 @@ void ApplicationUI::add(const QString &account, const QString &key, int type) {
 	query.bindValue(":email", account);
 	query.bindValue(":secret", key);
 	query.bindValue(":type", type);
+	query.bindValue(":digit", digits);
 	if (query.exec()) {
 		int id = isNew ? query.lastInsertId().toInt() : item->id();
 		delete item;
 		m_dataModel->insert(
-				new AccountItem(id, account, key, type, 0, this));
+				new AccountItem(id, account, key, type, 0, digits, this));
 		logToConsole(QString("Added/Updated Id: %1").arg(id));
 	} else {
 		logToConsole(QString("Create record error: ").arg(query.lastError().text()));
@@ -142,16 +144,30 @@ void ApplicationUI::init() {
 	query.exec(
 			"CREATE TABLE IF NOT EXISTS accounts"
 					" (id INTEGER PRIMARY KEY, email TEXT NOT NULL, secret TEXT NOT NULL,"
-					" counter INTEGER DEFAULT 0, type INTEGER)");
+					" counter INTEGER DEFAULT 0, type INTEGER, digits INTEGER DEFAULT 6)");
 
-	if (query.exec("SELECT id, email, secret, type, counter FROM accounts")) {
+	if(query.exec("PRAGMA table_info(accounts)")){
+		int nameIdx = query.record().indexOf("name");
+		bool bb = true;
+		while(bb && query.next()){
+			if(!query.value(nameIdx).toString().compare("digits", Qt::CaseInsensitive)){
+				logToConsole("Column Digits Existed.");
+				bb = false;
+			}
+		}
+		if(bb){
+			query.exec("ALTER TABLE accounts ADD COLUMN digits INTEGER DEFAULT 6");
+			logToConsole("Column Digits Created.");
+		}
+	}
+	if (query.exec("SELECT id, email, secret, type, counter, digits FROM accounts")) {
 		while (query.next()) {
-			QSqlRecord record = query.record();
-			AccountItem *item = new AccountItem(record.value(0).toInt(), // Id
-					record.value(1).toString(), // Email
-					record.value(2).toString(), // Secret
-					record.value(3).toInt(), // Type
-					record.value(4).toInt(), // Counter
+			AccountItem *item = new AccountItem(query.value(0).toInt(), // Id
+					query.value(1).toString(), // Email
+					query.value(2).toString(), // Secret
+					query.value(3).toInt(), // Type
+					query.value(4).toInt(), // Counter
+					query.value(5).toInt(), // Digits
 					this // Parent
 					);
 			logToConsole(QString("Id: %1, Email %2").arg(item->id()).arg(item->email()));
@@ -184,11 +200,12 @@ void ApplicationUI::nextTotp() {
 void ApplicationUI::scanBarcode() {
 	QrScanner *pScanner = new QrScanner(this);
 	QObject::connect(pScanner,
-			SIGNAL(detected(const QString&,const QString&, int)), this,
-			SLOT(add(const QString&,const QString&, int)));
+			SIGNAL(detected(const QString&,const QString&, int, int)), this,
+			SLOT(add(const QString&,const QString&, int, int)));
 	QObject::connect(pScanner,
-			SIGNAL(detected(const QString&,const QString&, int)), pScanner,
+			SIGNAL(detected(const QString&,const QString&, int, int)), pScanner,
 			SLOT(close()));
+	pScanner->open();
 }
 
 void ApplicationUI::insertToClipboard(const QString& code){

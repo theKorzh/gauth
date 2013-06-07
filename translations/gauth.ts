@@ -24,34 +24,39 @@
         <translation>Clear</translation>
     </message>
     <message>
-        <location filename="../assets/NewEntry.qml" line="45"/>
+        <location filename="../assets/NewEntry.qml" line="46"/>
         <source>Enter your secret key from the 2-step verification setup page.</source>
         <translation>Enter your secret key from the 2-step verification setup page.</translation>
     </message>
     <message>
-        <location filename="../assets/NewEntry.qml" line="58"/>
+        <location filename="../assets/NewEntry.qml" line="59"/>
         <source>Your Account&apos;s name</source>
         <translation>Your Account&apos;s name</translation>
     </message>
     <message>
-        <location filename="../assets/NewEntry.qml" line="64"/>
+        <location filename="../assets/NewEntry.qml" line="65"/>
         <source>Your Key</source>
         <translation>Your Key</translation>
     </message>
     <message>
-        <location filename="../assets/NewEntry.qml" line="80"/>
+        <location filename="../assets/NewEntry.qml" line="74"/>
+        <source>Key Length:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/NewEntry.qml" line="112"/>
         <source>Type:</source>
         <translation>Type:</translation>
     </message>
     <message>
-        <location filename="../assets/NewEntry.qml" line="84"/>
-        <location filename="../assets/NewEntry.qml" line="85"/>
+        <location filename="../assets/NewEntry.qml" line="116"/>
+        <location filename="../assets/NewEntry.qml" line="117"/>
         <source>Time based OTP</source>
         <translation>Time based OTP</translation>
     </message>
     <message>
-        <location filename="../assets/NewEntry.qml" line="89"/>
-        <location filename="../assets/NewEntry.qml" line="90"/>
+        <location filename="../assets/NewEntry.qml" line="121"/>
+        <location filename="../assets/NewEntry.qml" line="122"/>
         <source>Counter based OTP</source>
         <translation>Counter based OTP</translation>
     </message>

@@ -10,7 +10,7 @@
 
 #include <stdint.h>
 
-int getHotpCode(const uint8_t *secret, int secretLen, unsigned long step);
-int getTotpCode(const uint8_t *secret, int secretLen);
+int getHotpCode(const uint8_t *secret, int secretLen, unsigned long step, int digits = 6);
+int getTotpCode(const uint8_t *secret, int secretLen, int digits = 6);
 
 #endif /* COMPUTE_CODE_H_ */

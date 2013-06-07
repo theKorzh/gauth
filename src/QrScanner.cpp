@@ -9,6 +9,8 @@
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/Sheet>
 
+#include <QUrl>
+
 #include "log.h"
 
 using namespace bb::cascades;
@@ -23,7 +25,6 @@ QrScanner::QrScanner(QObject* parent) :
 	// create root object for the UI
 	m_pRoot = qml->createRootObject<Sheet>();
 	m_pRoot->setParent(this);
-	m_pRoot->open();
 }
 
 QrScanner::~QrScanner() {
@@ -32,25 +33,32 @@ QrScanner::~QrScanner() {
 }
 
 void QrScanner::process(const QString& data) {
-	QString lower = data.toLower();
-	if (lower.startsWith("otpauth://")) {
-		QStringRef ref = lower.midRef(10);
-		bool hotp = true;
-		if (ref.startsWith("totp/")) {
-			hotp = false;
+	QUrl url(data);
+	logToConsole(QString("Processing: %1").arg(data));
+	logToConsole(QString("Scheme: %1").arg(url.scheme()));
+	if(!QString("otpauth").compare(url.scheme(), Qt::CaseInsensitive)){
+		bool hotp = false;
+		int digits = 6;
+		QString path = url.path().mid(1);
+		QString secret = url.queryItemValue("secret");
+		if(QString("totp").compare(url.host(), Qt::CaseInsensitive)){
+			hotp = true;
 		}
-		QString substr = lower.mid(15);
-		// TODO: Debug here
-		QStringList list = substr.split('?');
-		if (list[1].startsWith("secret=")) {
-			QString secret = list[1].mid(7);
-			Q_EMIT detected(list[0], secret, hotp);
+		if(url.hasQueryItem("digits")){
+			digits = url.queryItemValue("digits").toInt();
 		}
+		Q_EMIT detected(path, secret, digits, hotp);
+		logToConsole(data);
+		logToConsole(QString("Path: %1, Secret: %2, Digit: %3, HOTP: %4").arg(path).arg(secret).arg(digits).arg(hotp));
 	}
 }
 
 void QrScanner::markForDelete() {
 	deleteLater();
+}
+
+void QrScanner::open(){
+	m_pRoot->open();
 }
 
 void QrScanner::close() {

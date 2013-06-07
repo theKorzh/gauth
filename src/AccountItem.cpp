@@ -16,19 +16,19 @@
 #include "base32.h"
 
 AccountItem::AccountItem(QObject* parent) :
-		QObject(parent), m_iId(0), m_iType(0), m_iCounter(0), m_len(0), m_pSecret(
+		QObject(parent), m_iId(0), m_iType(0), m_iCounter(0), m_len(0), m_iDigits(6), m_pSecret(
 				NULL), m_iEnabled(1), m_code("000000"), m_email("") {
 
 }
 AccountItem::AccountItem(const AccountItem& src) :
 		QObject(src.parent()), m_iId(src.m_iId), m_iType(src.m_iType), m_iCounter(
-				src.m_iCounter), m_len(src.m_len), m_pSecret(src.m_pSecret), m_iEnabled(
+				src.m_iCounter), m_len(src.m_len), m_iDigits(src.m_iDigits), m_pSecret(src.m_pSecret), m_iEnabled(
 				src.m_iEnabled), m_code(src.m_code), m_email(src.m_email) {
 	logToConsole("Copied.");
 }
 AccountItem::AccountItem(int id, const QString& email, const QString& secret,
-		int type, int counter, QObject* parent) :
-		QObject(parent), m_iId(id), m_iType(type), m_iCounter(counter), m_iEnabled(
+		int type, int counter, int digits, QObject* parent) :
+		QObject(parent), m_iId(id), m_iType(type), m_iCounter(counter), m_iDigits(digits), m_iEnabled(
 				1), m_code(""), m_email(email) {
 	uint8_t* pTmp = new uint8_t[100];
 	m_len = base32_decode((const uint8_t*) secret.toAscii().constData(), pTmp,
@@ -40,7 +40,7 @@ AccountItem::AccountItem(int id, const QString& email, const QString& secret,
 	if (m_iType) {
 		code = 0;
 	} else {
-		code = getTotpCode(m_pSecret, m_len);
+		code = getTotpCode(m_pSecret, m_len, m_iDigits);
 	}
 	m_code.sprintf("%06d", code);
 }
@@ -94,7 +94,7 @@ bool AccountItem::next() {
 			query.bindValue(":id", m_iId);
 			query.bindValue(":counter", m_iCounter + 1);
 			if (query.exec()) {
-				setCode(getHotpCode(m_pSecret, m_len, ++m_iCounter));
+				setCode(getHotpCode(m_pSecret, m_len, ++m_iCounter, m_iDigits));
 				QTimer *pTimer = new QTimer();
 				connect(pTimer, SIGNAL(timeout()), this, SLOT(setEnabled()));
 				connect(pTimer, SIGNAL(timeout()), pTimer, SLOT(stop()));
@@ -108,7 +108,7 @@ bool AccountItem::next() {
 		}
 		return false;
 	} else {
-		setCode(getTotpCode(m_pSecret, m_len));
+		setCode(getTotpCode(m_pSecret, m_len, m_iDigits));
 		return true;
 	}
 }

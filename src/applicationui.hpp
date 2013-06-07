@@ -36,7 +36,7 @@ public slots:
 	/*!
 	 * @brief Add new key Entry
 	 */
-	void add(const QString &account, const QString &key, int type);
+	void add(const QString &account, const QString &key, int digits, int type);
 public:
 	/*!
 	 * @brief Remove an Entry based on its Id

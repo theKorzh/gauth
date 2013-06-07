@@ -6,7 +6,7 @@ Page {
         acceptAction: ActionItem {
             title: qsTr("Create")
             onTriggered: {
-                _app.add(account.text, key.text, type.selectedIndex)
+                _app.add(account.text, key.text, digit.selectedValue, type.selectedIndex)
                 done()
             }
         }
@@ -31,6 +31,7 @@ Page {
     function reset(){
         account.resetText()
         key.resetText()
+        digit.selectedIndex = 2
         type.selectedIndex = 0
     }
     Container {
@@ -67,6 +68,37 @@ Page {
                 input.submitKey: SubmitKey.Next
             }
             Label {
+            }
+            DropDown {
+                id: digit
+                title: qsTr("Key Length:")
+                options: [
+                    Option {
+                        text: "4"
+                        value: 4
+                    },
+                    Option {
+                        text: "5"
+                        value: 5
+                    },
+                    Option {
+                        text: "6"
+                        value: 6
+                        selected: true
+                    },
+                    Option {
+                        text: "7"
+                        value: 7
+                    },
+                    Option {
+                        text: "8"
+                        value: 8
+                    },
+                    Option {
+                        text: "9"
+                        value: 9
+                    }
+                ]
             }
             Container {
                 layout: DockLayout {
