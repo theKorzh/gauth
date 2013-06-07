@@ -39,7 +39,7 @@ void QrScanner::process(const QString& data) {
 	if(!QString("otpauth").compare(url.scheme(), Qt::CaseInsensitive)){
 		bool hotp = false;
 		int digits = 6;
-		QString path = url.path().mid(1);
+		QString path = QUrl::fromPercentEncoding(url.path().mid(1).toAscii());
 		QString secret = url.queryItemValue("secret");
 		if(QString("totp").compare(url.host(), Qt::CaseInsensitive)){
 			hotp = true;

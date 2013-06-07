@@ -40,7 +40,6 @@ Sheet {
                 }
 
                 onViewfinderStopped: {
-                    barcodeDetector.camera = null
                     camera.close()
                 }
                 
@@ -82,6 +81,7 @@ Sheet {
         camera.open()
     }
     onClosed: {
+        barcodeDetector.camera = null
         camera.stopViewfinder()
     }
 }
