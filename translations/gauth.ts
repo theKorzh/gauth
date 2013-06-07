@@ -19,9 +19,8 @@
         <translation>New Key Entry</translation>
     </message>
     <message>
-        <location filename="../assets/NewEntry.qml" line="23"/>
         <source>Clear</source>
-        <translation>Clear</translation>
+        <translation type="obsolete">Clear</translation>
     </message>
     <message>
         <location filename="../assets/NewEntry.qml" line="46"/>
@@ -44,19 +43,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/NewEntry.qml" line="112"/>
+        <location filename="../assets/NewEntry.qml" line="104"/>
         <source>Type:</source>
         <translation>Type:</translation>
     </message>
     <message>
-        <location filename="../assets/NewEntry.qml" line="116"/>
-        <location filename="../assets/NewEntry.qml" line="117"/>
+        <location filename="../assets/NewEntry.qml" line="108"/>
+        <location filename="../assets/NewEntry.qml" line="109"/>
         <source>Time based OTP</source>
         <translation>Time based OTP</translation>
     </message>
     <message>
-        <location filename="../assets/NewEntry.qml" line="121"/>
-        <location filename="../assets/NewEntry.qml" line="122"/>
+        <location filename="../assets/NewEntry.qml" line="113"/>
+        <location filename="../assets/NewEntry.qml" line="114"/>
         <source>Counter based OTP</source>
         <translation>Counter based OTP</translation>
     </message>

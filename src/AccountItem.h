@@ -23,7 +23,7 @@ class AccountItem: public QObject {
 public:
 	AccountItem(QObject* parent = 0);
 	AccountItem(const AccountItem&);
-	AccountItem(int id, const QString& email, const QString& secret, int type, int counter, int digits, QObject* parent = 0);
+	AccountItem(int id, const QString& email, const QString& secret, int type, int counter, int digits = 6, QObject* parent = 0);
 	virtual ~AccountItem();
 
 	int id() const;

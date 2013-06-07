@@ -18,20 +18,20 @@ Page {
         }
         title: qsTr("New Key Entry")
     }
-    actions: [
-        ActionItem {
-            title: qsTr("Clear")
-            ActionBar.placement: ActionBarPlacement.OnBar
-            imageSource: "asset:///icons/ic_cancel.png"
-            onTriggered: {
-                reset();
-            }
-        }
-    ]
+//    actions: [
+//        ActionItem {
+//            title: qsTr("Clear")
+//            ActionBar.placement: ActionBarPlacement.OnBar
+//            imageSource: "asset:///icons/ic_cancel.png"
+//            onTriggered: {
+//                reset();
+//            }
+//        }
+//    ]
     function reset(){
         account.resetText()
         key.resetText()
-        digit.selectedIndex = 2
+        digit.selectedIndex = 0
         type.selectedIndex = 0
     }
     Container {
@@ -73,14 +73,6 @@ Page {
                 id: digit
                 title: qsTr("Key Length:")
                 options: [
-                    Option {
-                        text: "4"
-                        value: 4
-                    },
-                    Option {
-                        text: "5"
-                        value: 5
-                    },
                     Option {
                         text: "6"
                         value: 6

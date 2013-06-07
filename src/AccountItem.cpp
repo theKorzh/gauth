@@ -15,21 +15,41 @@
 #include "compute_code.h"
 #include "base32.h"
 
-AccountItem::AccountItem(QObject* parent) :
-		QObject(parent), m_iId(0), m_iType(0), m_iCounter(0), m_len(0), m_iDigits(6), m_pSecret(
-				NULL), m_iEnabled(1), m_code("000000"), m_email("") {
+const char* format(int digit) {
+	switch (digit) {
+	case 6:
+		return "%06d";
+	case 4:
+		return "%04d";
+	case 5:
+		return "%05d";
+	case 7:
+		return "%07d";
+	case 8:
+		return "%08d";
+	case 9:
+		return "%09d";
+	default:
+		return "%06d";
+	}
+}
 
+AccountItem::AccountItem(QObject* parent) :
+		QObject(parent), m_iId(0), m_iType(0), m_iCounter(0), m_len(0), m_iDigits(
+				6), m_pSecret(NULL), m_iEnabled(1), m_code("000000"), m_email(
+				"") {
 }
 AccountItem::AccountItem(const AccountItem& src) :
 		QObject(src.parent()), m_iId(src.m_iId), m_iType(src.m_iType), m_iCounter(
-				src.m_iCounter), m_len(src.m_len), m_iDigits(src.m_iDigits), m_pSecret(src.m_pSecret), m_iEnabled(
-				src.m_iEnabled), m_code(src.m_code), m_email(src.m_email) {
+				src.m_iCounter), m_len(src.m_len), m_iDigits(src.m_iDigits), m_pSecret(
+				src.m_pSecret), m_iEnabled(src.m_iEnabled), m_code(src.m_code), m_email(
+				src.m_email) {
 	logToConsole("Copied.");
 }
 AccountItem::AccountItem(int id, const QString& email, const QString& secret,
 		int type, int counter, int digits, QObject* parent) :
-		QObject(parent), m_iId(id), m_iType(type), m_iCounter(counter), m_iDigits(digits), m_iEnabled(
-				1), m_code(""), m_email(email) {
+		QObject(parent), m_iId(id), m_iType(type), m_iCounter(counter), m_iDigits(
+				digits), m_iEnabled(1), m_code(""), m_email(email) {
 	uint8_t* pTmp = new uint8_t[100];
 	m_len = base32_decode((const uint8_t*) secret.toAscii().constData(), pTmp,
 			100);
@@ -42,7 +62,7 @@ AccountItem::AccountItem(int id, const QString& email, const QString& secret,
 	} else {
 		code = getTotpCode(m_pSecret, m_len, m_iDigits);
 	}
-	m_code.sprintf("%06d", code);
+	setCode(code);
 }
 
 AccountItem::~AccountItem() {
@@ -72,7 +92,23 @@ bool AccountItem::enabled() const {
 }
 
 void AccountItem::setCode(int code) {
-	m_code.sprintf("%06d", code);
+	switch (m_iDigits) {
+	case 6:
+		m_code.sprintf("%06d", code);
+		break;
+	case 7:
+		m_code.sprintf("%07d", code);
+		break;
+	case 8:
+		m_code.sprintf("%08d", code);
+		break;
+	case 9:
+		m_code.sprintf("%09d", code);
+		break;
+	default:
+		m_code.sprintf("%06d", code);
+		break;
+	}
 	codeChanged(m_code);
 }
 
