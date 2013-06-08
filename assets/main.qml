@@ -5,29 +5,6 @@ import bb.system 1.0
 Page {
     id: page
     actions: [
-//        ActionItem {
-//            title: qsTr("How it work")
-//            imageSource: "asset:///icons/ic_help.png"
-//            ActionBar.placement: ActionBarPlacement.OnBar
-//        },
-        ActionItem {
-            title: qsTr("Buy me a beer")
-            ActionBar.placement: ActionBarPlacement.InOverflow
-            imageSource: "asset:///icons/ic_donate.png"
-            onTriggered: {
-                invoke.trigger("bb.action.OPEN")
-            }
-            attachedObjects: [
-                Invocation {
-                    id: invoke
-                    query{
-                        mimeType: "text/html"
-                        uri: "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6XZ562VGST6H2"
-                        invokeActionId: "bb.action.OPEN"
-                    }
-                }
-            ]
-        },
         ActionItem {
             id: actionAdd
             title: qsTr("Add account")
@@ -36,6 +13,9 @@ Page {
             shortcuts: [
                 SystemShortcut {
                     type: SystemShortcuts.CreateNew
+                },
+                Shortcut {
+                    key: "N"
                 }
             ]
             onTriggered: {
@@ -79,6 +59,25 @@ Page {
                     }
                 }
             ]
+        },
+        InvokeActionItem {
+            title: qsTr("Share")
+            ActionBar.placement: ActionBarPlacement.InOverflow
+            query {
+                mimeType: "text/html"
+                data: qsTr("Check out Google Authenticator in BlackBerry World!<br>You can find it at <a href=\"https://appworld.blackberry.com/webstore/content/29401059/\">https://appworld.blackberry.com/webstore/content/29401059/</a>")
+                invokeActionId: "bb.action.SHARE"
+            }
+        },
+        InvokeActionItem {
+            title: qsTr("Buy me a beer")
+            ActionBar.placement: ActionBarPlacement.InOverflow
+            imageSource: "asset:///icons/ic_donate.png"
+            query{
+                mimeType: "text/plain"
+                uri: "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6XZ562VGST6H2"
+                invokeActionId: "bb.action.OPEN"
+            }
         }
     ]
     attachedObjects: [
@@ -156,13 +155,17 @@ Page {
                                     ActionItem {
                                         title: qsTr("Copy to Clipboard")
                                         imageSource: "asset:///icons/ic_copy.png"
+                                        shortcuts: [
+                                            Shortcut {
+                                                key: "C"
+                                            }
+                                        ]
                                         onTriggered: {
                                         	Qt.app.insertToClipboard(ListItemData.code)
                                         }
                                     }
-                                    ActionItem {
+                                    DeleteActionItem {
                                         title: qsTr("Delete This Entry")
-                                        imageSource: "asset:///icons/ic_delete.png"
                                         onTriggered: {
                                             Qt.dlg.body = qsTr("Are you sure to delete account: %0").arg(ListItemData.email)
                                             Qt.dlg.show()
