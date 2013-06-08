@@ -159,8 +159,8 @@ void ApplicationUI::init() {
 			"CREATE TABLE IF NOT EXISTS accounts"
 					" (id INTEGER PRIMARY KEY, email TEXT NOT NULL, secret TEXT NOT NULL,"
 					" counter INTEGER DEFAULT 0, type INTEGER, digits INTEGER DEFAULT 6)");
-
-	if(query.exec("PRAGMA table_info(accounts)")){
+/* Time shifted, no want to check anymore. */
+/*	if(query.exec("PRAGMA table_info(accounts)")){
 		int nameIdx = query.record().indexOf("name");
 		bool bb = true;
 		while(bb && query.next()){
@@ -173,7 +173,7 @@ void ApplicationUI::init() {
 			query.exec("ALTER TABLE accounts ADD COLUMN digits INTEGER DEFAULT 6");
 			logToConsole("Column Digits Created.");
 		}
-	}
+	}*/
 	if (query.exec("SELECT id, email, secret, type, counter, digits FROM accounts")) {
 		while (query.next()) {
 			AccountItem *item = new AccountItem(query.value(0).toInt(), // Id

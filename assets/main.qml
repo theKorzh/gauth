@@ -11,6 +11,24 @@ Page {
 //            ActionBar.placement: ActionBarPlacement.OnBar
 //        },
         ActionItem {
+            title: qsTr("Buy me a beer")
+            ActionBar.placement: ActionBarPlacement.InOverflow
+            imageSource: "asset:///icons/ic_donate.png"
+            onTriggered: {
+                invoke.trigger("bb.action.OPEN")
+            }
+            attachedObjects: [
+                Invocation {
+                    id: invoke
+                    query{
+                        mimeType: "text/html"
+                        uri: "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6XZ562VGST6H2"
+                        invokeActionId: "bb.action.OPEN"
+                    }
+                }
+            ]
+        },
+        ActionItem {
             id: actionAdd
             title: qsTr("Add account")
             imageSource: "asset:///icons/ic_add.png"

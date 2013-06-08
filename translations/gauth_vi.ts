@@ -76,63 +76,68 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="15"/>
+        <location filename="../assets/main.qml" line="14"/>
+        <source>Buy me a beer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/main.qml" line="33"/>
         <source>Add account</source>
         <translation>Thêm tài khoản</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="29"/>
+        <location filename="../assets/main.qml" line="47"/>
         <source>Add Account</source>
         <translation>Thêm tài khoản</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="30"/>
+        <location filename="../assets/main.qml" line="48"/>
         <source>How can I help you add new Account?</source>
         <translation>Bạn muốn thêm tài khoản mới như thế nào?</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="33"/>
+        <location filename="../assets/main.qml" line="51"/>
         <source>Add Account Manually</source>
         <translation>Thêm bằng tay</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="37"/>
+        <location filename="../assets/main.qml" line="55"/>
         <source>Cancel</source>
         <translation>Hủy bỏ</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="41"/>
+        <location filename="../assets/main.qml" line="59"/>
         <source>Scan QR Barcode</source>
         <translation>Quét mã QR Code</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="53"/>
-        <location filename="../assets/main.qml" line="54"/>
+        <location filename="../assets/main.qml" line="71"/>
+        <location filename="../assets/main.qml" line="72"/>
         <source>Confirm Deletion</source>
         <translation>Xác nhận Xóa</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="88"/>
+        <location filename="../assets/main.qml" line="106"/>
         <source>Google Authenticator</source>
         <translation>Trình xác thực Google</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="137"/>
+        <location filename="../assets/main.qml" line="155"/>
         <source>Authenticator Code</source>
         <translation>Mã Xác thực</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="139"/>
+        <location filename="../assets/main.qml" line="157"/>
         <source>Copy to Clipboard</source>
         <translation>Sao chép vào Clipboard</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="146"/>
+        <location filename="../assets/main.qml" line="164"/>
         <source>Delete This Entry</source>
         <translation>Xóa tài khoản này</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="149"/>
+        <location filename="../assets/main.qml" line="167"/>
         <source>Are you sure to delete account: %0</source>
         <translation>Bạn chắc là muốn xóa tài khoản: %0</translation>
     </message>
