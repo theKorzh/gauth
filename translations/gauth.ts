@@ -19,10 +19,6 @@
         <translation>New Key Entry</translation>
     </message>
     <message>
-        <source>Clear</source>
-        <translation type="obsolete">Clear</translation>
-    </message>
-    <message>
         <location filename="../assets/NewEntry.qml" line="46"/>
         <source>Enter your secret key from the 2-step verification setup page.</source>
         <translation>Enter your secret key from the 2-step verification setup page.</translation>
@@ -40,7 +36,7 @@
     <message>
         <location filename="../assets/NewEntry.qml" line="74"/>
         <source>Key Length:</source>
-        <translation type="unfinished"></translation>
+        <translation>Key Length:</translation>
     </message>
     <message>
         <location filename="../assets/NewEntry.qml" line="104"/>
@@ -103,30 +99,20 @@
     <message>
         <location filename="../assets/main.qml" line="64"/>
         <source>Share</source>
-        <translation type="unfinished"></translation>
+        <translation>Share</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="68"/>
-        <source>Check out Google Authenticator in BlackBerry World!&lt;br&gt;You can find it at &lt;a href=&quot;https://appworld.blackberry.com/webstore/content/29401059/&quot;&gt;https://appworld.blackberry.com/webstore/content/29401059/&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/main.qml" line="105"/>
-        <source>Google Authenticator</source>
-        <translation>Google Authenticator</translation>
-    </message>
-    <message>
-        <location filename="../assets/main.qml" line="154"/>
+        <location filename="../assets/main.qml" line="155"/>
         <source>Authenticator Code</source>
-        <translation>Google Authenticator</translation>
+        <translation type="unfinished">Authenticator Code</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="156"/>
+        <location filename="../assets/main.qml" line="158"/>
         <source>Copy to Clipboard</source>
         <translation>Copy to Clipboard</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="168"/>
+        <location filename="../assets/main.qml" line="170"/>
         <source>Delete This Entry</source>
         <translation>Delete This Entry</translation>
     </message>
@@ -137,9 +123,9 @@
         <translation>Confirm Deletion</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="73"/>
+        <location filename="../assets/main.qml" line="74"/>
         <source>Buy me a beer</source>
-        <translation type="unfinished"></translation>
+        <translation>Buy me a beer</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="28"/>
@@ -147,7 +133,17 @@
         <translation>How can I help you add new Account?</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="170"/>
+        <location filename="../assets/main.qml" line="69"/>
+        <source>Check out 2 Steps Authenticator in BlackBerry World! You can find it at https://appworld.blackberry.com/webstore/content/29401059/</source>
+        <translation>Check out 2 Steps Authenticator in BlackBerry World! You can find it at https://appworld.blackberry.com/webstore/content/29401059/</translation>
+    </message>
+    <message>
+        <location filename="../assets/main.qml" line="106"/>
+        <source>2 Steps Authenticator</source>
+        <translation>2 Steps Authenticator</translation>
+    </message>
+    <message>
+        <location filename="../assets/main.qml" line="172"/>
         <source>Are you sure to delete account: %0</source>
         <translation>Are you sure to delete account: %0</translation>
     </message>

@@ -19,10 +19,6 @@
         <translation>Tài khoản mới</translation>
     </message>
     <message>
-        <source>Clear</source>
-        <translation type="obsolete">Xóa</translation>
-    </message>
-    <message>
         <location filename="../assets/NewEntry.qml" line="46"/>
         <source>Enter your secret key from the 2-step verification setup page.</source>
         <translation>Nhập khóa bí mật của bạn từ trang thiết lập xác minh 2 bước.</translation>
@@ -40,7 +36,7 @@
     <message>
         <location filename="../assets/NewEntry.qml" line="74"/>
         <source>Key Length:</source>
-        <translation type="unfinished"></translation>
+        <translation>Độ dài:</translation>
     </message>
     <message>
         <location filename="../assets/NewEntry.qml" line="104"/>
@@ -76,9 +72,9 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="73"/>
+        <location filename="../assets/main.qml" line="74"/>
         <source>Buy me a beer</source>
-        <translation type="unfinished"></translation>
+        <translation>Tặng mình ly bia :D</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="10"/>
@@ -119,35 +115,35 @@
     <message>
         <location filename="../assets/main.qml" line="64"/>
         <source>Share</source>
-        <translation type="unfinished"></translation>
+        <translation>Chia sẻ</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="68"/>
-        <source>Check out Google Authenticator in BlackBerry World!&lt;br&gt;You can find it at &lt;a href=&quot;https://appworld.blackberry.com/webstore/content/29401059/&quot;&gt;https://appworld.blackberry.com/webstore/content/29401059/&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <location filename="../assets/main.qml" line="69"/>
+        <source>Check out 2 Steps Authenticator in BlackBerry World! You can find it at https://appworld.blackberry.com/webstore/content/29401059/</source>
+        <translation>Tải trình xác thực 2 bước từ BlackBerry World! Bạn có thể tải nó từ https://appworld.blackberry.com/webstore/content/29401059/ </translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="105"/>
-        <source>Google Authenticator</source>
-        <translation>Trình xác thực Google</translation>
+        <location filename="../assets/main.qml" line="106"/>
+        <source>2 Steps Authenticator</source>
+        <translation>Trình xác thực 2 bước</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="154"/>
+        <location filename="../assets/main.qml" line="155"/>
         <source>Authenticator Code</source>
         <translation>Mã Xác thực</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="156"/>
+        <location filename="../assets/main.qml" line="158"/>
         <source>Copy to Clipboard</source>
         <translation>Sao chép vào Clipboard</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="168"/>
+        <location filename="../assets/main.qml" line="170"/>
         <source>Delete This Entry</source>
         <translation>Xóa tài khoản này</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="170"/>
+        <location filename="../assets/main.qml" line="172"/>
         <source>Are you sure to delete account: %0</source>
         <translation>Bạn chắc là muốn xóa tài khoản: %0</translation>
     </message>

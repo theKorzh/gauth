@@ -64,8 +64,9 @@ Page {
             title: qsTr("Share")
             ActionBar.placement: ActionBarPlacement.InOverflow
             query {
-                mimeType: "text/html"
-                data: qsTr("Check out Google Authenticator in BlackBerry World!<br>You can find it at <a href=\"https://appworld.blackberry.com/webstore/content/29401059/\">https://appworld.blackberry.com/webstore/content/29401059/</a>")
+                mimeType: "text/plain"
+                uri: "https://appworld.blackberry.com/webstore/content/29401059/"
+                data: qsTr("Check out 2 Steps Authenticator in BlackBerry World! You can find it at https://appworld.blackberry.com/webstore/content/29401059/")
                 invokeActionId: "bb.action.SHARE"
             }
         },
@@ -102,7 +103,7 @@ Page {
         }
         Container {
             Label {
-                text: qsTr("Google Authenticator")
+                text: qsTr("2 Steps Authenticator")
             }
             ProgressIndicator {
                 horizontalAlignment: HorizontalAlignment.Fill
@@ -152,6 +153,7 @@ Page {
                             contextActions: [
                                 ActionSet {
                                     title: qsTr("Authenticator Code")
+                                    subtitle: ListItemData.email
                                     ActionItem {
                                         title: qsTr("Copy to Clipboard")
                                         imageSource: "asset:///icons/ic_copy.png"

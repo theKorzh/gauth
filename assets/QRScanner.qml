@@ -34,11 +34,6 @@ Sheet {
                     camera.startViewfinder()
                 }
 
-                onViewfinderStarted: {
-                    // Setup the barcode detector with the camera object now
-                    barcodeDetector.camera = camera
-                }
-
                 onViewfinderStopped: {
                     camera.close()
                 }
@@ -64,7 +59,8 @@ Sheet {
             attachedObjects: [
                 BarcodeDetector {
                     id: barcodeDetector
-                    formats: BarcodeFormat.QrCode
+                    camera: camera
+                    formats: BarcodeFormat.Any
                     onDetected: {
                         _scanner.process(data)
                     }
