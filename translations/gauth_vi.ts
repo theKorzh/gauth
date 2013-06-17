@@ -74,7 +74,7 @@
     <message>
         <location filename="../assets/main.qml" line="74"/>
         <source>Buy me a beer</source>
-        <translation>Tặng mình ly bia :D</translation>
+        <translation>Tặng mình ly bia:D</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="10"/>
@@ -120,7 +120,7 @@
     <message>
         <location filename="../assets/main.qml" line="69"/>
         <source>Check out 2 Steps Authenticator in BlackBerry World! You can find it at https://appworld.blackberry.com/webstore/content/29401059/</source>
-        <translation>Tải trình xác thực 2 bước từ BlackBerry World! Bạn có thể tải nó từ https://appworld.blackberry.com/webstore/content/29401059/ </translation>
+        <translation>Tải trình xác thực 2 bước từ BlackBerry World! Bạn có thể tải nó từ https://appworld.blackberry.com/webstore/content/29401059/</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="106"/>
