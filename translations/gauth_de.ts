@@ -45,23 +45,15 @@
     </message>
     <message>
         <location filename="../assets/NewEntry.qml" line="108"/>
+        <location filename="../assets/NewEntry.qml" line="109"/>
         <source>Time based OTP</source>
         <translation>Time based OTP</translation>
     </message>
     <message>
-        <location filename="../assets/NewEntry.qml" line="109"/>
-        <source>Time based OTP</source>
-        <translation>zeitbasiertes Einmalpasswort</translation>
-    </message>
-    <message>
         <location filename="../assets/NewEntry.qml" line="113"/>
-        <source>Counter based OTP</source>
-        <translation>Counter based OTP</translation>
-    </message>
-    <message>
         <location filename="../assets/NewEntry.qml" line="114"/>
         <source>Counter based OTP</source>
-        <translation>zählerbasiertes Einmalpasswort</translation>
+        <translation>Counter based OTP</translation>
     </message>
 </context>
 <context>
@@ -125,14 +117,15 @@
         <translation>Löschen</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="51"/>
-        <source>Confirm Deletion</source>
-        <translation>Löschen?</translation>
+        <location filename="../assets/main.qml" line="191"/>
+        <source>Generate verification codes for the 2-step verification feature for your Google Account</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../assets/main.qml" line="51"/>
         <location filename="../assets/main.qml" line="52"/>
         <source>Confirm Deletion</source>
-        <translation>adurch wird das ausgewählte Element gelöscht.</translation>
+        <translation>Löschen?</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="74"/>

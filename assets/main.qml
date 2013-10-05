@@ -188,7 +188,7 @@ Page {
     onCreationCompleted: {
         // this slot is called when declarative scene is created
         // write post creation initialization here
-        console.debug("Page - onCreationCompleted()")
+        console.debug(qsTr("Generate verification codes for the 2-step verification feature for your Google Account"))
         Qt.page = page;
         Qt.app = _app;
         Qt.dlg = confirmDialog;

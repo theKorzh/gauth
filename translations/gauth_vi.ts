@@ -147,5 +147,10 @@
         <source>Are you sure to delete account: %0</source>
         <translation>Bạn chắc là muốn xóa tài khoản: %0</translation>
     </message>
+    <message>
+        <location filename="../assets/main.qml" line="191"/>
+        <source>Generate verification codes for the 2-step verification feature for your Google Account</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
