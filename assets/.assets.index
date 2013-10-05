@@ -1,10 +1,11 @@
 1
-12
+13
 icons/ic_add.png
 icons/ic_donate.png
 icons/ic_cancel.png
 icons/ic_copy.png
 icons/ic_rotate.png
+icons/ic_scan_barcode.png
 NewEntry.qml
 QRScanner.qml
 main.qml

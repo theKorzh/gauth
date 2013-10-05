@@ -12,9 +12,7 @@ class DataModel;
 class GroupDataModel;
 }
 namespace system {
-
 class Clipboard;
-
 }  // namespace system
 }
 class AccountItem;

@@ -13,6 +13,7 @@
 #include <bb/multimedia/SystemSound>
 
 #include <bb/system/Clipboard>
+#include <bb/system/SystemToast>
 
 #include <QtSql/QtSql>
 #include <QDebug>
@@ -224,4 +225,9 @@ void ApplicationUI::insertToClipboard(const QString& code){
 		m_pClipboard = new Clipboard(this);
 	}
 	m_pClipboard->insert("text/plain", code.toAscii());
+
+	SystemToast *pToast = new SystemToast(this);
+	QObject::connect(pToast, SIGNAL(finished (bb::system::SystemUiResult::Type)), pToast, SLOT(deleteLater()));
+	pToast->setBody(tr("Copied code: %1 to clipboard").arg(code));
+	pToast->show();
 }

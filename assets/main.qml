@@ -6,7 +6,6 @@ Page {
     id: page
     actions: [
         ActionItem {
-            id: actionAdd
             title: qsTr("Add account")
             imageSource: "asset:///icons/ic_add.png"
             ActionBar.placement: ActionBarPlacement.OnBar
@@ -19,46 +18,19 @@ Page {
                 }
             ]
             onTriggered: {
-                menu.show()
+                sheetNew.open()
             }
-            attachedObjects: [
-                SystemDialog {
-                    id: menu
-                    title: qsTr("Add Account")
-                    body: qsTr("How can I help you add new Account?")
-                    confirmButton {
-                        enabled: true
-                        label: qsTr("Add Account Manually")
-                    }
-                    cancelButton {
-                        enabled: true
-                        label: qsTr("Cancel")
-                    }
-                    customButton {
-                        enabled: true
-                        label: qsTr("Scan QR Barcode")
-                    }
-                    onFinished: {
-                        if (value == SystemUiResult.ConfirmButtonSelection) {
-                            sheetNew.open()
-                        } else if (value == SystemUiResult.CustomButtonSelection) {
-                            _app.scanBarcode()
-                        }
-                    }
-                },
-                SystemDialog {
-                    id: confirmDialog
-                    title: qsTr("Confirm Deletion")
-                    body: qsTr("Confirm Deletion")
-                    onFinished: {
-                        if (value == SystemUiResult.ConfirmButtonSelection) {
-                            if (_app.remove(listView.dataModel.data(listView.activeItem).id)) {
-                                listView.dataModel.removeAt(listView.activeItem)
-                            }
-                        }
-                    }
-                }
-            ]
+        },
+        ActionItem {
+            title: qsTr("Scan QR Barcode")
+            imageSource: "asset:///icons/ic_scan_barcode.png"
+            ActionBar.placement: ActionBarPlacement.OnBar
+            shortcuts: Shortcut {
+                key: "S"
+            }
+            onTriggered: {
+                _app.scanBarcode()                
+            }
         },
         InvokeActionItem {
             title: qsTr("Share")
@@ -130,6 +102,7 @@ Page {
                                 opacity: 1
                             }
                             Container {
+                                minWidth: 720
                                 Label {
                                     text: ListItemData.email
                                     textStyle.fontSize: FontSize.Default
@@ -137,6 +110,11 @@ Page {
                                 Label {
                                     text: ListItemData.code
                                     textStyle.fontSize: FontSize.XLarge
+                                }
+                                onTouch: {
+                                    if (event.isUp()) {
+                                        Qt.app.insertToClipboard(ListItemData.code)
+                                    }
                                 }
                             }
                             ImageButton {
@@ -150,22 +128,14 @@ Page {
                                     var s = ListItemData.next
                                 }
                             }
+                            onTouchEnter: {   
+                                console.debug("Parent Container")                      
+                                Qt.app.insertToClipboard(ListItemData.code)
+                            }
                             contextActions: [
                                 ActionSet {
                                     title: qsTr("Authenticator Code")
                                     subtitle: ListItemData.email
-                                    ActionItem {
-                                        title: qsTr("Copy to Clipboard")
-                                        imageSource: "asset:///icons/ic_copy.png"
-                                        shortcuts: [
-                                            Shortcut {
-                                                key: "C"
-                                            }
-                                        ]
-                                        onTriggered: {
-                                        	Qt.app.insertToClipboard(ListItemData.code)
-                                        }
-                                    }
                                     DeleteActionItem {
                                         title: qsTr("Delete This Entry")
                                         onTriggered: {
@@ -178,6 +148,22 @@ Page {
                         }
                     }
                 ]
+                
+                attachedObjects: [                    
+                    SystemDialog {
+                        id: confirmDialog
+                        title: qsTr("Confirm Deletion")
+                        body: qsTr("Confirm Deletion")
+                        onFinished: {
+                            if (value == SystemUiResult.ConfirmButtonSelection) {
+                                if (_app.remove(listView.dataModel.data(listView.activeItem).id)) {
+                                    listView.dataModel.removeAt(listView.activeItem)
+                                }
+                            }
+                        }
+                    }
+                ]
+                
                 property variant activeItem: undefined
                 onActivationChanged: {
                     if (active) activeItem = indexPath; //[0]

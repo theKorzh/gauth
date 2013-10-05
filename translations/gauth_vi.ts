@@ -2,6 +2,14 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="vi_VN">
 <context>
+    <name>ApplicationUI</name>
+    <message>
+        <location filename="../src/applicationui.cpp" line="231"/>
+        <source>Copied code: %1 to clipboard</source>
+        <translation>Đã sao chép %1 vào bộ nhớ tạm</translation>
+    </message>
+</context>
+<context>
     <name>NewEntry</name>
     <message>
         <location filename="../assets/NewEntry.qml" line="7"/>
@@ -72,83 +80,78 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="74"/>
+        <location filename="../assets/main.qml" line="46"/>
         <source>Buy me a beer</source>
-        <translation>Tặng mình ly bia:D</translation>
+        <translation type="unfinished">Tặng mình ly bia:D</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="10"/>
+        <location filename="../assets/main.qml" line="9"/>
         <source>Add account</source>
-        <translation>Thêm tài khoản</translation>
+        <translation type="unfinished">Thêm tài khoản</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="27"/>
         <source>Add Account</source>
-        <translation>Thêm tài khoản</translation>
+        <translation type="obsolete">Thêm tài khoản</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="28"/>
         <source>How can I help you add new Account?</source>
-        <translation>Bạn muốn thêm tài khoản mới như thế nào?</translation>
+        <translation type="obsolete">Bạn muốn thêm tài khoản mới như thế nào?</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="31"/>
         <source>Add Account Manually</source>
-        <translation>Thêm bằng tay</translation>
+        <translation type="obsolete">Thêm bằng tay</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="35"/>
         <source>Cancel</source>
-        <translation>Hủy bỏ</translation>
+        <translation type="obsolete">Hủy bỏ</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="39"/>
+        <location filename="../assets/main.qml" line="25"/>
         <source>Scan QR Barcode</source>
-        <translation>Quét mã QR Code</translation>
-    </message>
-    <message>
-        <location filename="../assets/main.qml" line="51"/>
-        <location filename="../assets/main.qml" line="52"/>
-        <source>Confirm Deletion</source>
-        <translation>Xác nhận Xóa</translation>
-    </message>
-    <message>
-        <location filename="../assets/main.qml" line="64"/>
-        <source>Share</source>
-        <translation>Chia sẻ</translation>
-    </message>
-    <message>
-        <location filename="../assets/main.qml" line="69"/>
-        <source>Check out 2 Steps Authenticator in BlackBerry World! You can find it at https://appworld.blackberry.com/webstore/content/29401059/</source>
-        <translation>Tải trình xác thực 2 bước từ BlackBerry World! Bạn có thể tải nó từ https://appworld.blackberry.com/webstore/content/29401059/</translation>
-    </message>
-    <message>
-        <location filename="../assets/main.qml" line="106"/>
-        <source>2 Steps Authenticator</source>
-        <translation>Trình xác thực 2 bước</translation>
+        <translation type="unfinished">Quét mã QR Code</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="155"/>
+        <location filename="../assets/main.qml" line="156"/>
+        <source>Confirm Deletion</source>
+        <translation type="unfinished">Xác nhận Xóa</translation>
+    </message>
+    <message>
+        <location filename="../assets/main.qml" line="36"/>
+        <source>Share</source>
+        <translation type="unfinished">Chia sẻ</translation>
+    </message>
+    <message>
+        <location filename="../assets/main.qml" line="41"/>
+        <source>Check out 2 Steps Authenticator in BlackBerry World! You can find it at https://appworld.blackberry.com/webstore/content/29401059/</source>
+        <translation type="unfinished">Tải trình xác thực 2 bước từ BlackBerry World! Bạn có thể tải nó từ https://appworld.blackberry.com/webstore/content/29401059/</translation>
+    </message>
+    <message>
+        <location filename="../assets/main.qml" line="78"/>
+        <source>2 Steps Authenticator</source>
+        <translation type="unfinished">Trình xác thực 2 bước</translation>
+    </message>
+    <message>
+        <location filename="../assets/main.qml" line="137"/>
         <source>Authenticator Code</source>
-        <translation>Mã Xác thực</translation>
+        <translation type="unfinished">Mã Xác thực</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="158"/>
         <source>Copy to Clipboard</source>
-        <translation>Sao chép vào Clipboard</translation>
+        <translation type="obsolete">Sao chép vào Clipboard</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="170"/>
+        <location filename="../assets/main.qml" line="140"/>
         <source>Delete This Entry</source>
-        <translation>Xóa tài khoản này</translation>
+        <translation type="unfinished">Xóa tài khoản này</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="172"/>
+        <location filename="../assets/main.qml" line="142"/>
         <source>Are you sure to delete account: %0</source>
-        <translation>Bạn chắc là muốn xóa tài khoản: %0</translation>
+        <translation type="unfinished">Bạn chắc là muốn xóa tài khoản: %0</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="191"/>
+        <location filename="../assets/main.qml" line="177"/>
         <source>Generate verification codes for the 2-step verification feature for your Google Account</source>
         <translation type="unfinished"></translation>
     </message>
