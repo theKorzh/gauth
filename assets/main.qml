@@ -139,7 +139,7 @@ Page {
                                     DeleteActionItem {
                                         title: qsTr("Delete This Entry")
                                         onTriggered: {
-                                            Qt.dlg.body = qsTr("Are you sure to delete account: %0").arg(ListItemData.email)
+                                            Qt.dlg.body = qsTr("Are you sure to delete account: %0?").arg(ListItemData.email)
                                             Qt.dlg.show()
                                         }
                                     }
@@ -152,8 +152,8 @@ Page {
                 attachedObjects: [                    
                     SystemDialog {
                         id: confirmDialog
-                        title: qsTr("Confirm Deletion")
-                        body: qsTr("Confirm Deletion")
+                        title: qsTr("Confirm Deletion?")
+                        body: qsTr("Confirm Deletion?")
                         onFinished: {
                             if (value == SystemUiResult.ConfirmButtonSelection) {
                                 if (_app.remove(listView.dataModel.data(listView.activeItem).id)) {

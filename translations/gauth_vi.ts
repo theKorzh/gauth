@@ -82,78 +82,58 @@
     <message>
         <location filename="../assets/main.qml" line="46"/>
         <source>Buy me a beer</source>
-        <translation type="unfinished">Tặng mình ly bia:D</translation>
+        <translation>Tặng mình ly bia:D</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="9"/>
         <source>Add account</source>
-        <translation type="unfinished">Thêm tài khoản</translation>
-    </message>
-    <message>
-        <source>Add Account</source>
-        <translation type="obsolete">Thêm tài khoản</translation>
-    </message>
-    <message>
-        <source>How can I help you add new Account?</source>
-        <translation type="obsolete">Bạn muốn thêm tài khoản mới như thế nào?</translation>
-    </message>
-    <message>
-        <source>Add Account Manually</source>
-        <translation type="obsolete">Thêm bằng tay</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Hủy bỏ</translation>
+        <translation>Thêm tài khoản</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="25"/>
         <source>Scan QR Barcode</source>
-        <translation type="unfinished">Quét mã QR Code</translation>
+        <translation>Quét mã QR Code</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="155"/>
         <location filename="../assets/main.qml" line="156"/>
-        <source>Confirm Deletion</source>
-        <translation type="unfinished">Xác nhận Xóa</translation>
+        <source>Confirm Deletion?</source>
+        <translation>Xác nhận Xóa?</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="36"/>
         <source>Share</source>
-        <translation type="unfinished">Chia sẻ</translation>
+        <translation>Chia sẻ</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="41"/>
         <source>Check out 2 Steps Authenticator in BlackBerry World! You can find it at https://appworld.blackberry.com/webstore/content/29401059/</source>
-        <translation type="unfinished">Tải trình xác thực 2 bước từ BlackBerry World! Bạn có thể tải nó từ https://appworld.blackberry.com/webstore/content/29401059/</translation>
+        <translation>Tải trình xác thực 2 bước từ BlackBerry World! Bạn có thể tải nó từ https://appworld.blackberry.com/webstore/content/29401059/</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="78"/>
         <source>2 Steps Authenticator</source>
-        <translation type="unfinished">Trình xác thực 2 bước</translation>
+        <translation>Trình xác thực 2 bước</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="137"/>
         <source>Authenticator Code</source>
-        <translation type="unfinished">Mã Xác thực</translation>
-    </message>
-    <message>
-        <source>Copy to Clipboard</source>
-        <translation type="obsolete">Sao chép vào Clipboard</translation>
+        <translation>Mã Xác thực</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="140"/>
         <source>Delete This Entry</source>
-        <translation type="unfinished">Xóa tài khoản này</translation>
+        <translation>Xóa tài khoản này</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="142"/>
-        <source>Are you sure to delete account: %0</source>
-        <translation type="unfinished">Bạn chắc là muốn xóa tài khoản: %0</translation>
+        <source>Are you sure to delete account: %0?</source>
+        <translation>Bạn chắc là muốn xóa tài khoản: %0?</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="177"/>
         <source>Generate verification codes for the 2-step verification feature for your Google Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Tạo mã xác minh cho tính năng xác minh 2 bước cho Tài khoản Google của bạn</translation>
     </message>
 </context>
 </TS>

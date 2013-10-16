@@ -6,7 +6,7 @@
     <message>
         <location filename="../src/applicationui.cpp" line="231"/>
         <source>Copied code: %1 to clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Copied code: %1 to clipboard</translation>
     </message>
 </context>
 <context>
@@ -82,78 +82,58 @@
     <message>
         <location filename="../assets/main.qml" line="9"/>
         <source>Add account</source>
-        <translation type="unfinished">Add account</translation>
-    </message>
-    <message>
-        <source>Add Account</source>
-        <translation type="obsolete">Add account</translation>
-    </message>
-    <message>
-        <source>Add Account Manually</source>
-        <translation type="obsolete">Add account Manually</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Cancel</translation>
+        <translation>Add account</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="25"/>
         <source>Scan QR Barcode</source>
-        <translation type="unfinished">Scan QR Barcode</translation>
+        <translation>Scan QR Barcode</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="36"/>
         <source>Share</source>
-        <translation type="unfinished">Share</translation>
+        <translation>Share</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="137"/>
         <source>Authenticator Code</source>
-        <translation type="unfinished">Authenticator Code</translation>
-    </message>
-    <message>
-        <source>Copy to Clipboard</source>
-        <translation type="obsolete">Copy to Clipboard</translation>
+        <translation>Authenticator Code</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="140"/>
         <source>Delete This Entry</source>
-        <translation type="unfinished">Delete This Entry</translation>
+        <translation>Delete This Entry</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="155"/>
         <location filename="../assets/main.qml" line="156"/>
-        <source>Confirm Deletion</source>
-        <translation type="unfinished">Confirm Deletion</translation>
+        <source>Confirm Deletion?</source>
+        <translation>Confirm Deletion?</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="177"/>
         <source>Generate verification codes for the 2-step verification feature for your Google Account</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="46"/>
         <source>Buy me a beer</source>
-        <translation type="unfinished">Buy me a beer</translation>
-    </message>
-    <message>
-        <source>How can I help you add new Account?</source>
-        <translation type="obsolete">How can I help you add new Account?</translation>
+        <translation>Buy me a beer</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="41"/>
         <source>Check out 2 Steps Authenticator in BlackBerry World! You can find it at https://appworld.blackberry.com/webstore/content/29401059/</source>
-        <translation type="unfinished">Check out 2 Steps Authenticator in BlackBerry World! You can find it at https://appworld.blackberry.com/webstore/content/29401059/</translation>
+        <translation>Check out 2 Steps Authenticator in BlackBerry World! You can find it at https://appworld.blackberry.com/webstore/content/29401059/</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="78"/>
         <source>2 Steps Authenticator</source>
-        <translation type="unfinished">2 Steps Authenticator</translation>
+        <translation>2 Steps Authenticator</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="142"/>
-        <source>Are you sure to delete account: %0</source>
-        <translation type="unfinished">Are you sure to delete account: %0</translation>
+        <source>Are you sure to delete account: %0?</source>
+        <translation>Are you sure to delete account: %0?</translation>
     </message>
 </context>
 </TS>

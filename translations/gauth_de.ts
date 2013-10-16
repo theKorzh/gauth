@@ -14,12 +14,12 @@
     <message>
         <location filename="../assets/NewEntry.qml" line="7"/>
         <source>Create</source>
-        <translation>Hinz.</translation>
+        <translation>Hinz</translation>
     </message>
     <message>
         <location filename="../assets/NewEntry.qml" line="14"/>
         <source>Cancel</source>
-        <translation>Abbr.</translation>
+        <translation>Abbr</translation>
     </message>
     <message>
         <location filename="../assets/NewEntry.qml" line="19"/>
@@ -69,7 +69,7 @@
     <message>
         <location filename="../assets/QRScanner.qml" line="9"/>
         <source>Cancel</source>
-        <translation>Abbr.</translation>
+        <translation>Abbr</translation>
     </message>
     <message>
         <location filename="../assets/QRScanner.qml" line="15"/>
@@ -107,7 +107,7 @@
     <message>
         <location filename="../assets/main.qml" line="155"/>
         <location filename="../assets/main.qml" line="156"/>
-        <source>Confirm Deletion</source>
+        <source>Confirm Deletion?</source>
         <translation>Löschen?</translation>
     </message>
     <message>
@@ -132,7 +132,7 @@
     </message>
     <message>
         <location filename="../assets/main.qml" line="142"/>
-        <source>Are you sure to delete account: %0</source>
+        <source>Are you sure to delete account: %0?</source>
         <translation>Sind Sie sicher, dass Sie das Konto %0 löschen möchten?</translation>
     </message>
 </context>
