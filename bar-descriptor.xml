@@ -57,7 +57,7 @@
 
     <!--  Name of author which is used for signing. Must match the developer name of your development certificate. -->
     <author>Code For Fun</author>
-    <authorId>gYAAgBHvPCoX_shJJDzKl-tDYD4</authorId>
+    <authorId>gYAAgP00FiBDIeA_PgvNEztKlnI</authorId>
     <description>
        Generate verification codes for the 2-step verification feature for your Google Account
        <text xml:lang="vi">T&#x1ea1;o m&#xe3; x&#xe1;c minh cho t&#xed;nh n&#x103;ng x&#xe1;c minh 2 b&#x1b0;&#x1edb;c cho T&#xe0;i kho&#x1ea3;n Google c&#x1ee7;a b&#x1ea1;n.</text>
