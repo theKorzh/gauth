@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="en_US">
+<TS version="2.0" language="ru_RU">
 <context>
     <name>ApplicationUI</name>
     <message>
         <location filename="../src/applicationui.cpp" line="231"/>
         <source>Copied code: %1 to clipboard</source>
-        <translation>Copied code: %1 to clipboard</translation>
+        <translation>Скопирован код: %1</translation>
     </message>
 </context>
 <context>
@@ -14,54 +14,54 @@
     <message>
         <location filename="../assets/NewEntry.qml" line="7"/>
         <source>Create</source>
-        <translation>Create</translation>
+        <translation>Создать</translation>
     </message>
     <message>
         <location filename="../assets/NewEntry.qml" line="14"/>
         <source>Cancel</source>
-        <translation>Cancel</translation>
+        <translation>Отмена</translation>
     </message>
     <message>
         <location filename="../assets/NewEntry.qml" line="19"/>
         <source>New Key Entry</source>
-        <translation>New Key Entry</translation>
+        <translation>Новый ключ</translation>
     </message>
     <message>
         <location filename="../assets/NewEntry.qml" line="46"/>
         <source>Enter your secret key from the 2-step verification setup page.</source>
-        <translation>Enter your secret key from the 2-step verification setup page.</translation>
+        <translation>Введите секретный ключ со страницы настройки двухфакторной аутентификации.</translation>
     </message>
     <message>
         <location filename="../assets/NewEntry.qml" line="59"/>
         <source>Your Account&apos;s name</source>
-        <translation>Your Account&apos;s name</translation>
+        <translation>Имя вашего аккаунта</translation>
     </message>
     <message>
         <location filename="../assets/NewEntry.qml" line="65"/>
         <source>Your Key</source>
-        <translation>Your Key</translation>
+        <translation>Ключ</translation>
     </message>
     <message>
         <location filename="../assets/NewEntry.qml" line="74"/>
         <source>Key Length:</source>
-        <translation>Key Length:</translation>
+        <translation>Длина ключа:</translation>
     </message>
     <message>
         <location filename="../assets/NewEntry.qml" line="104"/>
         <source>Type:</source>
-        <translation>Type:</translation>
+        <translation>Тип ключа:</translation>
     </message>
     <message>
         <location filename="../assets/NewEntry.qml" line="108"/>
         <location filename="../assets/NewEntry.qml" line="109"/>
         <source>Time based OTP</source>
-        <translation>Time based OTP</translation>
+        <translation>Одноразовый пароль по таймеру</translation>
     </message>
     <message>
         <location filename="../assets/NewEntry.qml" line="113"/>
         <location filename="../assets/NewEntry.qml" line="114"/>
         <source>Counter based OTP</source>
-        <translation>Counter based OTP</translation>
+        <translation>Одноразовый пароль по счетчику</translation>
     </message>
 </context>
 <context>
@@ -69,12 +69,12 @@
     <message>
         <location filename="../assets/QRScanner.qml" line="9"/>
         <source>Cancel</source>
-        <translation>Cancel</translation>
+        <translation>Отмена</translation>
     </message>
     <message>
         <location filename="../assets/QRScanner.qml" line="15"/>
         <source>Scan QR Code</source>
-        <translation>Scan QR Barcode</translation>
+        <translation>Сканировать QR-код</translation>
     </message>
 </context>
 <context>
@@ -82,48 +82,48 @@
     <message>
         <location filename="../assets/main.qml" line="9"/>
         <source>Add account</source>
-        <translation>Add account</translation>
+        <translation>Добавить учетную запись</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="25"/>
         <source>Scan QR Barcode</source>
-        <translation>Scan QR Barcode</translation>
+        <translation>Сканировать QR-код</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="36"/>
         <source>Share</source>
-        <translation>Share</translation>
+        <translation>Поделиться</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="137"/>
         <source>Authenticator Code</source>
-        <translation>Authenticator Code</translation>
+        <translation>Код аутентификации</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="140"/>
         <source>Delete This Entry</source>
-        <translation>Delete This Entry</translation>
+        <translation>Удалить запись</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="155"/>
         <location filename="../assets/main.qml" line="156"/>
         <source>Confirm Deletion?</source>
-        <translation>Confirm Deletion?</translation>
+        <translation>Действительно удалить?</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="177"/>
         <source>Generate verification codes for the 2-step verification feature for your Google Account</source>
-        <translation></translation>
+        <translation>Генерировать коды подтверждения для двухфакторной верификаии учетной записи Google</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="46"/>
         <source>Buy me a beer</source>
-        <translation>Buy me a beer</translation>
+        <translation>Купить мне пива</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="41"/>
         <source>Check out 2 Steps Authenticator in BlackBerry World! You can find it at https://appworld.blackberry.com/webstore/content/29401059/</source>
-        <translation>Check out 2 Steps Authenticator in BlackBerry World! You can find it at https://appworld.blackberry.com/webstore/content/29401059/</translation>
+        <translation>Попробуйте 2 Steps Authenticator из BlackBerry World! Скачайте здесь: https://appworld.blackberry.com/webstore/content/29401059/</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="78"/>
@@ -133,7 +133,7 @@
     <message>
         <location filename="../assets/main.qml" line="142"/>
         <source>Are you sure to delete account: %0?</source>
-        <translation>Are you sure to delete account: %0?</translation>
+        <translation>Действительно хотите удалить эту учетную запись: %0?</translation>
     </message>
 </context>
 </TS>
